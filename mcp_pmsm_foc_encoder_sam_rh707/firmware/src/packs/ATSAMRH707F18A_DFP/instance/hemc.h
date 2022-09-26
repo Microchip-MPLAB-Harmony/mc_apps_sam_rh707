@@ -1,7 +1,7 @@
-/**
- * \brief Instance header file for ATSAMRH707F18A
+/*
+ * Instance header file for ATSAMRH707F18A
  *
- * Copyright (c) 2021 Microchip Technology Inc. and its subsidiaries.
+ * Copyright (c) 2022 Microchip Technology Inc. and its subsidiaries.
  *
  * Subject to your compliance with these terms, you may use Microchip software and any derivatives
  * exclusively with Microchip products. It is your responsibility to comply with third party license
@@ -20,15 +20,15 @@
  *
  */
 
-/* file generated from device description version 2021-05-04T18:07:51Z */
+/* file generated from device description version 2022-01-06T10:27:17Z */
 #ifndef _SAMRH707_HEMC_INSTANCE_
 #define _SAMRH707_HEMC_INSTANCE_
 
 
 /* ========== Instance Parameter definitions for HEMC peripheral ========== */
-#define HEMC_INSTANCE_ID                         _UL_(59)   
-#define HEMC_CLOCK_ID                            _UL_(59)   
-#define HEMC_ID_HEMC_INTFIX                      _UL_(60)   
-#define HEMC_ID_HEMC_INTNOFIX                    _UL_(61)   
+#define HEMC_INSTANCE_ID                         (59)       
+#define HEMC_CLOCK_ID                            (59)       
+#define HEMC_ID_HEMC_INTFIX                      (60)       
+#define HEMC_ID_HEMC_INTNOFIX                    (61)       
 
 #endif /* _SAMRH707_HEMC_INSTANCE_ */

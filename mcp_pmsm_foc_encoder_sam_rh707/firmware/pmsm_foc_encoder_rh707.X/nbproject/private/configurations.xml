@@ -5,7 +5,7 @@
   <confs>
     <conf name="mclv2_sam_rh707_pim" type="2">
       <platformToolSN>:=MPLABComm-USB-Microchip:=&lt;vid>04D8:=&lt;pid>9015:=&lt;rev>0100:=&lt;man>Microchip Technology Incorporated:=&lt;prod>MPLAB ICD 4:=&lt;sn>JIT180810963:=&lt;drv>x:=&lt;xpt>b:=end</platformToolSN>
-      <languageToolchainDir>E:\ProgramFiles\bin</languageToolchainDir>
+      <languageToolchainDir>C:\Program Files\Microchip\xc32\v4.00\bin</languageToolchainDir>
       <mdbdebugger version="1">
         <placeholder1>place holder 1</placeholder1>
         <placeholder2>place holder 2</placeholder2>

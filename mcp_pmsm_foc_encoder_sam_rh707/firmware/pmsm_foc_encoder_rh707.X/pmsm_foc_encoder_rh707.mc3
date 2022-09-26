@@ -1,12 +1,5 @@
 <config configName="mclv2_sam_rh707_pim" projectName="pmsm_foc_encoder_rh707" configVersion="1.1" device="ATSAMRH707F18A" deviceLibraryClass="com.microchip.mcc.harmony.Harmony3Library" coreVersion="5.4.11">
-   <usedPackages class="java.util.ArrayList">
-      <package packageName="csp" version="" contentType="HARMONY">
-         <modules class="java.util.ArrayList"/>
-      </package>
-      <package packageName="dev_packs" version="3.13.0" contentType="HARMONY">
-         <modules class="java.util.ArrayList"/>
-      </package>
-   </usedPackages>
+   <usedPackages class="java.util.ArrayList"/>
    <usedClasses class="java.util.TreeMap">
       <entry>
          <string>X2CScope</string>
@@ -573,19 +566,19 @@
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="core" name="!@#harmonyUserData"/>
          <value>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&lt;UserData&gt;
   &lt;UserData dnOrder=&quot;0&quot;&gt;
-    &lt;GraphSettings canvasHeight=&quot;515&quot; canvasWidth=&quot;423&quot; dnOrder=&quot;0&quot;/&gt;
-    &lt;ComponentGraph dnOrder=&quot;1&quot; id=&quot;__ROOTVIEW&quot;&gt;
+    &lt;ComponentGraph dnOrder=&quot;0&quot; id=&quot;__ROOTVIEW&quot;&gt;
       &lt;ElementPositions dnOrder=&quot;0&quot;&gt;
-        &lt;ElementPosition dnOrder=&quot;0&quot; id=&quot;X2CScope&quot; x=&quot;314&quot; y=&quot;235&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;1&quot; id=&quot;adc&quot; x=&quot;118&quot; y=&quot;100&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;2&quot; id=&quot;cmsis&quot; x=&quot;320&quot; y=&quot;20&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;3&quot; id=&quot;core&quot; x=&quot;220&quot; y=&quot;21&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;4&quot; id=&quot;dfp&quot; x=&quot;20&quot; y=&quot;20&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;5&quot; id=&quot;flexcom1&quot; x=&quot;122&quot; y=&quot;377&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;6&quot; id=&quot;pwm0&quot; x=&quot;120&quot; y=&quot;153&quot;/&gt;
-        &lt;ElementPosition dnOrder=&quot;7&quot; id=&quot;tc0&quot; x=&quot;122&quot; y=&quot;230&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;0&quot; id=&quot;X2CScope&quot; x=&quot;163&quot; y=&quot;250&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;1&quot; id=&quot;adc&quot; x=&quot;125&quot; y=&quot;103&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;2&quot; id=&quot;cmsis&quot; x=&quot;284&quot; y=&quot;23&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;3&quot; id=&quot;core&quot; x=&quot;195&quot; y=&quot;23&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;4&quot; id=&quot;dfp&quot; x=&quot;0&quot; y=&quot;22&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;5&quot; id=&quot;flexcom1&quot; x=&quot;0&quot; y=&quot;250&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;6&quot; id=&quot;pwm0&quot; x=&quot;0&quot; y=&quot;103&quot;/&gt;
+        &lt;ElementPosition dnOrder=&quot;7&quot; id=&quot;tc0&quot; x=&quot;255&quot; y=&quot;102&quot;/&gt;
       &lt;/ElementPositions&gt;
     &lt;/ComponentGraph&gt;
+    &lt;GraphSettings canvasHeight=&quot;515&quot; canvasWidth=&quot;423&quot; dnOrder=&quot;1&quot;/&gt;
   &lt;/UserData&gt;
 &lt;/UserData&gt;
 </value>
@@ -4571,7 +4564,7 @@
       </entry>
       <entry>
          <file>..\src\config\mclv2_sam_rh707_pim\peripheral\flexcom\usart\plib_flexcom_usart_local.h</file>
-         <hash>ee1b0e9b5167a747d4c6cf8fa8c67027d7b50e44c3757b092670adac497b0741</hash>
+         <hash>ab93fd45b0e4b8313a701921da099d2bdf35839d7479149fda62987c9773e075</hash>
       </entry>
       <entry>
          <file>..\src\config\mclv2_sam_rh707_pim\peripheral\tc\plib_tc_common.h</file>
@@ -4715,7 +4708,7 @@
       </entry>
       <entry>
          <file>..\src\config\mclv2_sam_rh707_pim\toolchain_specifics.h</file>
-         <hash>39d182300448aa01753975284ddc83a9f2e5954215df1fe970920897dcc0f948</hash>
+         <hash>2559d185e92918f61c308a62200cb0cda72726c63111561524dd53afcc635a18</hash>
       </entry>
       <entry>
          <file>..\src\config\mclv2_sam_rh707_pim\pin_configurations.csv</file>
@@ -4835,7 +4828,7 @@
       </entry>
       <entry>
          <file>..\src\config\mclv2_sam_rh707_pim\peripheral\flexcom\usart\plib_flexcom1_usart.c</file>
-         <hash>9da132e70b570d2c95dff5691c8063ac842c1603cf28280a5ea915373fae60ab</hash>
+         <hash>d98329d8b83cd17a834b53ab54234ac771a13b259e210fa5de14632e9e0b1de8</hash>
       </entry>
       <entry>
          <file>..\src\config\mclv2_sam_rh707_pim\peripheral\flexcom\usart\plib_flexcom1_usart.h</file>

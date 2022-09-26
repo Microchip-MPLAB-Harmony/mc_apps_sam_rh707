@@ -110,7 +110,7 @@ void SYS_Initialize ( void* data )
   
     CLOCK_Initialize();
 
-	PIO_Initialize();
+    PIO_Initialize();
 
 
 
@@ -135,7 +135,6 @@ void SYS_Initialize ( void* data )
 
 
     X2CScope_Init();
-    
 
     NVIC_Initialize();
 
