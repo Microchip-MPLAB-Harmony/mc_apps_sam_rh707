@@ -19,7 +19,6 @@
               <itemPath>../src/config/mclv2_sam_rh707_pim/motor_control/pmsm_foc/mc_interface_handling.h</itemPath>
               <itemPath>../src/config/mclv2_sam_rh707_pim/motor_control/pmsm_foc/mc_motor_control.h</itemPath>
               <itemPath>../src/config/mclv2_sam_rh707_pim/motor_control/pmsm_foc/mc_pmsm_foc.h</itemPath>
-              <itemPath>../src/config/mclv2_sam_rh707_pim/motor_control/pmsm_foc/mc_position_control.h</itemPath>
               <itemPath>../src/config/mclv2_sam_rh707_pim/motor_control/pmsm_foc/mc_pwm.h</itemPath>
               <itemPath>../src/config/mclv2_sam_rh707_pim/motor_control/pmsm_foc/mc_ramp_profiler.h</itemPath>
               <itemPath>../src/config/mclv2_sam_rh707_pim/motor_control/pmsm_foc/mc_rotor_position.h</itemPath>
@@ -200,7 +199,6 @@
               <itemPath>../src/config/mclv2_sam_rh707_pim/motor_control/pmsm_foc/mc_interface_handling.c</itemPath>
               <itemPath>../src/config/mclv2_sam_rh707_pim/motor_control/pmsm_foc/mc_motor_control.c</itemPath>
               <itemPath>../src/config/mclv2_sam_rh707_pim/motor_control/pmsm_foc/mc_pmsm_foc.c</itemPath>
-              <itemPath>../src/config/mclv2_sam_rh707_pim/motor_control/pmsm_foc/mc_position_control.c</itemPath>
               <itemPath>../src/config/mclv2_sam_rh707_pim/motor_control/pmsm_foc/mc_pwm.c</itemPath>
               <itemPath>../src/config/mclv2_sam_rh707_pim/motor_control/pmsm_foc/mc_ramp_profiler.c</itemPath>
               <itemPath>../src/config/mclv2_sam_rh707_pim/motor_control/pmsm_foc/mc_rotor_position.c</itemPath>
@@ -289,7 +287,7 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>ICD4Tool</platformTool>
         <languageToolchain>XC32</languageToolchain>
-        <languageToolchainVersion>4.10</languageToolchainVersion>
+        <languageToolchainVersion>4.00</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <packs>
