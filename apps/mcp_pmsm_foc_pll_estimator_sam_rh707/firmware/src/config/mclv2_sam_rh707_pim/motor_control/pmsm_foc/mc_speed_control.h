@@ -194,28 +194,28 @@
  Module data type
  *******************************************************************************/
 
-typedef enum _tmcSpe_InstanceId_e
+typedef enum
 {
     speModuleInstance_01,
     speModuleInstance_02,
     speModuleInstance_max 
 }tmcSpe_InstanceId_e;
 
-typedef struct _tmcSpe_InputPorts_s 
+typedef struct
 {
     volatile uint16_t * potReading;
     volatile float * referenceSpeed;
     volatile float * actualSpeed;
 }tmcSpe_InputPorts_s;
 
-typedef struct _tmcSpe_OutputPorts_s
+typedef struct
 {
     float  * iqref;
     float *  referenceSpeed;
 }tmcSpe_OutputPorts_s;
 
 
-typedef struct _tmcSpe_UserParameters_s
+typedef struct
 {
     tmcLib_PiController_s    speedController;
     float speedFilterParam;
@@ -223,7 +223,7 @@ typedef struct _tmcSpe_UserParameters_s
     float maxReferenceSpeed;
 }tmcSpe_UserParameters_s;
 
-typedef struct _tmcSpe_ConfigParameters_s
+typedef struct
 {
     /* Instance identifier */
     uint8_t Id;

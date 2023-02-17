@@ -62,7 +62,7 @@ typedef struct
     float   Ts;
 }tmcRpo_Parameters_s;
 
-typedef struct _tmcRpo_StateVariables_s
+typedef struct
 {
     float  ealpha;
     float  ebeta;
@@ -139,7 +139,9 @@ static inline void mcRpo_EulerFilter( float new, float * old, float filterParam 
     *old += ( new - ( *old ) ) * filterParam;
  }
 
-#define ASSERT( expression, message ) { if(!expression)mcRpo_AssertionFailedReaction(message);}
+#define ASSERT( expression, message ) if(!expression){uint8_t status_e;\
+                                          status_e=(uint8_t)((tStd_ReturnType_e)mcRpo_AssertionFailedReaction(message));\
+                                          if(status_e==(uint8_t)returnType_Failed){/*Error log*/}}
 
 /*******************************************************************************
  Interface Functions 
@@ -155,7 +157,7 @@ static inline void mcRpo_EulerFilter( float new, float * old, float filterParam 
  * @param[out]:
  * @return:
  */
-tStd_ReturnType_e mcRpoI_RotorPositionCalculationInit( const tmcRpo_ConfigParameters_s * const rpoParam )
+tStd_ReturnType_e mcRpoI_PosCalInit( const tmcRpo_ConfigParameters_s * const rpoParam )
 {
     float Ke;
     
@@ -207,7 +209,7 @@ tStd_ReturnType_e mcRpoI_RotorPositionCalculationInit( const tmcRpo_ConfigParame
  * @param[out]:
  * @return:
  */
-void mcRpoI_RotorPositionCalculationRun( const tmcRpo_InstanceId_e Id )
+void mcRpoI_PosCalRun( const tmcRpo_InstanceId_e Id )
 {
     float sine, cosine;
     float ealpha, ebeta;
@@ -292,7 +294,7 @@ void mcRpoI_RotorPositionCalculationRun( const tmcRpo_InstanceId_e Id )
  * @param[out]:
  * @return:
  */
-void mcRpoI_RotorPositionCalculationReset( const tmcRpo_InstanceId_e Id )
+void mcRpoI_PosCalReset( const tmcRpo_InstanceId_e Id )
 {
     /* Reset state variables */
     mcRpo_StateVariables_mas[Id].Ed = 0.0f;

@@ -61,64 +61,64 @@
  Default module parameters 
  *******************************************************************************/
 #define PWM_MODULE_A_CONFIG   { \
-        0u, \
+        (tmcPwm_InstanceId_e)0u, \
         { \
             &mcMocI_AlphaBetaVoltage_gas[0u].alpha, &mcMocI_AlphaBetaVoltage_gas[0u].beta \
         }, \
         { \
-            PWM_FREQUENCY, \
+            (uint32_t)PWM_FREQUENCY, \
         } \
     }
 
 #define PWM_MODULE_B_CONFIG { \
-        1u, \
+        (tmcPwm_InstanceId_e)1u, \
         { \
             &mcMocI_AlphaBetaVoltage_gas[0u].alpha, &mcMocI_AlphaBetaVoltage_gas[0u].beta \
         }, \
         { \
-            PWM_FREQUENCY, \
+            (uint32_t)PWM_FREQUENCY, \
         } \
     }
 
 /*******************************************************************************
  Private data-types
  *******************************************************************************/
-typedef enum _tmcPwm_InstanceId_e
+typedef enum
 {
     pwmModuleInstance_01,
     pwmModuleInstance_02,
     pwmModuleInstance_max 
 }tmcPwm_InstanceId_e;
 
-typedef struct _tmcPwm_InputPorts_s 
+typedef struct
 {
     volatile float * ualpha_pf32;
     volatile float * ubeta_pf32;
 }tmcPwm_InputPorts_s;
 
 
-typedef struct _tmcPwm_OutputPorts_s 
+typedef struct
 {
 
 }tmcPwm_OutputPorts_s;
 
-typedef struct _tmcPwm_UserParameters_s 
+typedef struct
 {
     uint32_t frequencyInHz;
 }tmcPwm_UserParameters_s;
 
-typedef struct _tmcPwm_Dependencies_d
+typedef struct
 {
     
 }tmcPwm_Dependencies_s;
 
-typedef struct _tmcPwm_Parameters_s 
+typedef struct
 {
     uint32_t frequencyInHz;
     uint32_t  period;
 }tmcPwm_Parameters_s;
 
-typedef struct _tmcPwm_ConfigParameters_s 
+typedef struct 
 {
     /* Instance Id */
     tmcPwm_InstanceId_e Id; 
@@ -129,10 +129,10 @@ typedef struct _tmcPwm_ConfigParameters_s
     /* User Parameter */
     tmcPwm_UserParameters_s   userParam;
     
-//     /* Dependencies  */
+     /* Dependencies  */
 //    tmcPwm_Dependencies_s   dependency;
 //    
-//    /* Output Port */
+    /* Output Port */
 //    tmcPwm_OutputPorts_s    outPort;
     
 }tmcPwm_ConfigParameters_s;

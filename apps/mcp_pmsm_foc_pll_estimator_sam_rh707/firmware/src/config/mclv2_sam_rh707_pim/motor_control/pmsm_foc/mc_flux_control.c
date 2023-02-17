@@ -49,7 +49,7 @@
 /*******************************************************************************
  Private data-types 
  *******************************************************************************/
-typedef struct _tmcFlx_Parameters_s
+typedef struct
 {
     float  wbase;                 
     float  umaxSqr;    
@@ -60,7 +60,7 @@ typedef struct _tmcFlx_Parameters_s
     float  idmax;   
 }tmcFlx_Parameters_s;
 
-typedef struct _tmcFlx_StateVariables_s
+typedef struct
 {
     float uqrefFilt;                              
     float iqrefFilt;                            
@@ -116,7 +116,9 @@ static inline void mcFlx_EulerFilter( float new, float * old, float filterParam 
     *old += ( new - ( *old ) ) * filterParam;
  }
 
-#define ASSERT( expression, message ) { if(!expression)mcFlx_AssertionFailedReaction(message);}
+#define ASSERT( expression, message ) if(!expression){uint8_t status_e;\
+                                          status_e=(uint8_t)((tStd_ReturnType_e)mcFlx_AssertionFailedReaction(message));\
+                                          if(status_e==(uint8_t)returnType_Failed){/*Error log*/}}
 
 /*******************************************************************************
  Interface Functions 
@@ -205,9 +207,9 @@ void mcFlxI_FluxRegulationRun( const tmcFlx_InstanceId_e Id )
         mcFlx_StateVariables_mas[Id].iqrefLast = ( *mcFlx_InputPorts_mas[Id].iqref );
 
         /* d-axis current saturation  */
-        if(idref > 0)
+        if(idref > 0.0f)
         {
-             *mcFlx_OutputPorts_mas[Id].idref = 0;
+             *mcFlx_OutputPorts_mas[Id].idref = 0.0f;
         }
         else if( idref <  mcFlx_Parameters_mas[Id].idmax)
         {
@@ -221,7 +223,7 @@ void mcFlxI_FluxRegulationRun( const tmcFlx_InstanceId_e Id )
     else
     {
         /* Field weakening is disabled below rated speed. */
-        *mcFlx_OutputPorts_mas[Id].idref = 0;
+        *mcFlx_OutputPorts_mas[Id].idref = 0.0f;
     }
 }
 

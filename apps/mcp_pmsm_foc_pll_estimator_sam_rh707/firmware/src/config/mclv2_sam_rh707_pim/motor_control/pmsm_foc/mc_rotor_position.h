@@ -73,7 +73,7 @@
 /*
  * Fast loop time in seconds 
  */
-#define CONFIG_PllAlgorithmCycleTimeInSec   (float)(1/(float)PWM_FREQUENCY) 
+#define CONFIG_PllAlgorithmCycleTimeInSec   (float)(1.0f/(float)PWM_FREQUENCY) 
  
 
 /*
@@ -165,7 +165,7 @@
  User defined data types  
  *******************************************************************************/
 
-typedef enum _tmcRpo_InstanceId_e
+typedef enum
 {
     rpoModuleInstance_01,
     rpoModuleInstance_02,
@@ -173,7 +173,7 @@ typedef enum _tmcRpo_InstanceId_e
 }tmcRpo_InstanceId_e;
 
 
-typedef struct _tmcRpo_InputPorts_s 
+typedef struct 
 {
     volatile float * ialpha;
     volatile float * ibeta;
@@ -182,7 +182,7 @@ typedef struct _tmcRpo_InputPorts_s
     volatile float * umax;
 }tmcRpo_InputPorts_s;
 
-typedef struct _tmcRpo_OutputPorts_s
+typedef struct
 {
     float  * theta;
     float  * Wre;
@@ -190,7 +190,7 @@ typedef struct _tmcRpo_OutputPorts_s
     float  * es;
 }tmcRpo_OutputPorts_s;
 
-typedef struct _tmcRpo_UserParameters_s
+typedef struct
 {
     float  Rs;
     float  Ls;
@@ -201,7 +201,7 @@ typedef struct _tmcRpo_UserParameters_s
     float WrFilterBandwidth;
 }tmcRpo_UserParameters_s;
 
-typedef struct _tmcRpo_ConfigParameters_s
+typedef struct
 {
     /* Instance identifier */
     uint8_t Id;
@@ -237,7 +237,7 @@ extern tmcRpo_ConfigParameters_s  mcRpoI_ConfigParameters_gas[ROTOR_POSITION_INS
  * @param[out]:
  * @return:
  */
-tStd_ReturnType_e mcRpoI_RotorPositionCalculationInit( const tmcRpo_ConfigParameters_s * const rpoParam );
+tStd_ReturnType_e mcRpoI_PosCalInit( const tmcRpo_ConfigParameters_s * const rpoParam );
 
 /*! \brief Rotor position calculation execution  function 
  * 
@@ -249,7 +249,7 @@ tStd_ReturnType_e mcRpoI_RotorPositionCalculationInit( const tmcRpo_ConfigParame
  * @param[out]:
  * @return:
  */
-void mcRpoI_RotorPositionCalculationRun( const tmcRpo_InstanceId_e Id );
+void mcRpoI_PosCalRun( const tmcRpo_InstanceId_e Id );
 
 /*! \brief Rotor position calculation reset function 
  * 
@@ -261,7 +261,7 @@ void mcRpoI_RotorPositionCalculationRun( const tmcRpo_InstanceId_e Id );
  * @param[out]:
  * @return:
  */
-void mcRpoI_RotorPositionCalculationReset( const tmcRpo_InstanceId_e Id );
+void mcRpoI_PosCalReset( const tmcRpo_InstanceId_e Id );
 
 #endif //MCRPO_H
 

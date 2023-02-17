@@ -84,7 +84,9 @@ static tStd_ReturnType_e mcReg_AssertionFailedReaction( const char * message )
      return returnType_Failed;
 }
 
-#define ASSERT(expression, message) { if(!expression) mcReg_AssertionFailedReaction( message);}
+#define ASSERT( expression, message ) if(!expression){uint8_t status_e;\
+                                          status_e=(uint8_t)((tStd_ReturnType_e)mcReg_AssertionFailedReaction(message));\
+                                          if(status_e==(uint8_t)returnType_Failed){/*Error log*/}}
 
 /*******************************************************************************
  Interface Functions 

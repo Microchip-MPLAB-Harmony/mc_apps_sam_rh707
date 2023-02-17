@@ -126,14 +126,14 @@
 /*******************************************************************************
  User defined data types  
  *******************************************************************************/
-typedef enum _tmcFlx_InstanceId_e
+typedef enum tmcFlx_InstanceId
 {
     flxModuleInstance_01,
     flxModuleInstance_02,
     flxModuleInstance_max 
 }tmcFlx_InstanceId_e;
 
-typedef struct _tmcFlx_InputPorts_s 
+typedef struct tmcFlx_InputPorts
 {
     volatile float * ud;
     volatile float * wel;
@@ -142,12 +142,12 @@ typedef struct _tmcFlx_InputPorts_s
     volatile float * es;
 }tmcFlx_InputPorts_s;
 
-typedef struct _tmcFlx_OutputPorts_s
+typedef struct tmcFlx_OutputPorts
 {
     float  * idref;
 }tmcFlx_OutputPorts_s;
 
-typedef struct _tmcFlx_UserParameters_s
+typedef struct tmcFlx_UserParameters
 {
     float  wbase;                 
     float  umaxSqr;    
@@ -158,7 +158,7 @@ typedef struct _tmcFlx_UserParameters_s
     float  idmax;   
 }tmcFlx_UserParameters_s;
 
-typedef struct _tmcFlx_ConfigParameters_s
+typedef struct tmcFlx_ConfigParameters
 {
     /* Instance identifier */
     uint8_t Id;
@@ -194,7 +194,7 @@ extern tmcFlx_ConfigParameters_s  mcFlxI_ConfigParameters_gas[FLUX_CONTROL_INSTA
  * @param[out]:
  * @return:
  */
-tStd_ReturnType_e mcFlxI_FluxRegulationInit( const tmcFlx_ConfigParameters_s * const FlxParam );
+tStd_ReturnType_e mcFlxI_FluxRegulationInit( const tmcFlx_ConfigParameters_s * const flxParam );
 
 /*! \brief Flux regulation run function 
  * 

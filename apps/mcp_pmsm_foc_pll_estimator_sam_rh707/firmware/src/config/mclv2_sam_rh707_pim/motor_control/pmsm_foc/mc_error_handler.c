@@ -51,7 +51,7 @@ Headers inclusions
  Private variables 
  *******************************************************************************/
 tMCERR_STATE_SIGNAL_S    gMCERR_StateSignals;
-MCERR_CALLBACK_OBJECT    MCERR_CallbackObj;
+static MCERR_CALLBACK_OBJECT    MCERR_CallbackObj;
 
 /*******************************************************************************
  Interface variables 
@@ -95,7 +95,7 @@ void mcErr_FaultCallbackRegister(MCERR_FAULT_CALLBACK callback, uintptr_t contex
  */
 void mcErr_ErrorClear( void )
 {
-    gMCERR_StateSignals.errorCode = 0;
+    gMCERR_StateSignals.errorCode = 0U;
     LED_01_Clear();
 }
 
@@ -115,7 +115,7 @@ void mcErr_FaultControlISR(uint32_t status, uintptr_t context)
     /* Indicate the failure status by glowing LED D2 */
         LED_01_Set();
 
-    gMCERR_StateSignals.errorCode |= (1 << MCERR_OVERCURRENT);
+    gMCERR_StateSignals.errorCode |= (1U << MCERR_OVERCURRENT);
     PMSM_FOC_MotorStop();
 
     if (MCERR_CallbackObj.callback_fn != NULL)

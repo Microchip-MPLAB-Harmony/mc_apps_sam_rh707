@@ -54,7 +54,7 @@ Headers inclusions
 /*******************************************************************************
  Private variables 
  *******************************************************************************/
-typedef struct _tmcPwm_StateVariables_s 
+typedef struct
 {
     float ualpha_df32;
     float ubeta_df32;
@@ -72,7 +72,10 @@ typedef struct _tmcPwm_StateVariables_s
 /*******************************************************************************
  Private variables 
  *******************************************************************************/
-#define ASSERT(expression, message ) { if(!expression) mcPwm_AssertFailedReaction( message );}
+#define ASSERT( expression, message ) if(!expression){uint8_t status_e;\
+                                          status_e=(uint8_t)((tStd_ReturnType_e)mcPwm_AssertFailedReaction(message));\
+                                          if(status_e==(uint8_t)returnType_Failed){/*Error log*/}}
+
 static tmcPwm_InputPorts_s mcPwm_InputPorts_mas[PWM_INSTANCES];
 static tmcPwm_StateVariables_s mcPwm_StateVariables_mas[PWM_INSTANCES];
 static tmcPwm_Parameters_s mcPwm_Parameters_mas[PWM_INSTANCES];
@@ -88,15 +91,15 @@ tmcPwm_ConfigParameters_s mcPwmI_ConfigParameters_gas[PWM_INSTANCES] =
 #endif
 };
 
-float mcPwmI_PhaseADutyCycle_gdf32;
-float mcPwmI_PhaseBDutyCycke_gdf32;
-float mcPwmI_PhaseCDutyCycle_gdf32;
+//static float mcPwmI_PhaseADutyCycle_gdf32;
+//static float mcPwmI_PhaseBDutyCycke_gdf32;
+    //static float mcPwmI_PhaseCDutyCycle_gdf32;
 
 /*******************************************************************************
  Private Functions 
  *******************************************************************************/
 
-tStd_ReturnType_e mcPwm_AssertFailedReaction( const char * message )
+static tStd_ReturnType_e mcPwm_AssertFailedReaction( const char * message )
 {
     /*ToDo: Decide an appropriate error reaction */
      return returnType_Failed;
@@ -162,77 +165,77 @@ void mcPwmI_PulseWidthModulationRun( const tmcPwm_InstanceId_e Id )
     
     /* Inverse Clarke transformation*/
     mcPwm_StateVariables_mas[Id].ua_df32 = *mcPwm_InputPorts_mas[Id].ubeta_pf32;
-    mcPwm_StateVariables_mas[Id].ub_df32 = - (( *mcPwm_InputPorts_mas[Id].ubeta_pf32 ) /2 )
+    mcPwm_StateVariables_mas[Id].ub_df32 = - (( *mcPwm_InputPorts_mas[Id].ubeta_pf32 ) /2.0f )
                                                                         +  (SQRT3_BY2 *  ( *mcPwm_InputPorts_mas[Id].ualpha_pf32 ));
-    mcPwm_StateVariables_mas[Id].uc_df32 = - (( *mcPwm_InputPorts_mas[Id].ubeta_pf32 )/2 )
+    mcPwm_StateVariables_mas[Id].uc_df32 = - (( *mcPwm_InputPorts_mas[Id].ubeta_pf32 )/2.0f )
                                                                        -   ( SQRT3_BY2 *  ( *mcPwm_InputPorts_mas[Id].ualpha_pf32));
 
     /* Space vector modulation */
-    if( mcPwm_StateVariables_mas[Id].ua_df32 >= 0 )
+    if( mcPwm_StateVariables_mas[Id].ua_df32 >= 0.0f )
     {
         // (xx1)
-        if( mcPwm_StateVariables_mas[Id].ub_df32 >= 0 )
+        if( mcPwm_StateVariables_mas[Id].ub_df32 >= 0.0f )
         {
             // (x11)
             // Must be Sector 3 since Sector 7 not allowed
             // Sector 3: (0,1,1)  0-60 degrees
             mcPwm_StateVariables_mas[Id].t1_f32 = mcPwm_StateVariables_mas[Id].ub_df32;
             mcPwm_StateVariables_mas[Id].t2_f32 = mcPwm_StateVariables_mas[Id].ua_df32;
-            mcPwm_SvpwmTimeCalculation( &mcPwm_StateVariables_mas[Id ], mcPwm_Parameters_mas[Id].period );
-            mcPwm_StateVariables_mas[Id].duty[0] = (uint32_t) mcPwm_StateVariables_mas[Id].ta_f32;
-            mcPwm_StateVariables_mas[Id].duty[1]  = (uint32_t) mcPwm_StateVariables_mas[Id].tb_f32;
-            mcPwm_StateVariables_mas[Id].duty[2]  = (uint32_t) mcPwm_StateVariables_mas[Id].tc_f32;
+            mcPwm_SvpwmTimeCalculation( &mcPwm_StateVariables_mas[Id ], (float)mcPwm_Parameters_mas[Id].period );
+            mcPwm_StateVariables_mas[Id].duty[0] = (uint16_t)mcPwm_StateVariables_mas[Id].ta_f32;
+            mcPwm_StateVariables_mas[Id].duty[1]  = (uint16_t)mcPwm_StateVariables_mas[Id].tb_f32;
+            mcPwm_StateVariables_mas[Id].duty[2]  = (uint16_t)mcPwm_StateVariables_mas[Id].tc_f32;
         }
         else
         {
             // (x01)
-            if(  mcPwm_StateVariables_mas[Id].uc_df32 >= 0 )
+            if(  mcPwm_StateVariables_mas[Id].uc_df32 >= 0.0f )
             {
                // Sector 5: (1,0,1)  120-180 degrees              
                mcPwm_StateVariables_mas[Id].t1_f32 = mcPwm_StateVariables_mas[Id].ua_df32;
                mcPwm_StateVariables_mas[Id].t2_f32 = mcPwm_StateVariables_mas[Id].uc_df32;
-               mcPwm_SvpwmTimeCalculation( &mcPwm_StateVariables_mas[Id ], mcPwm_Parameters_mas[Id].period );
-               mcPwm_StateVariables_mas[Id].duty[0] = (uint32_t) mcPwm_StateVariables_mas[Id].tc_f32;
-               mcPwm_StateVariables_mas[Id].duty[1]  = (uint32_t) mcPwm_StateVariables_mas[Id].ta_f32;
-               mcPwm_StateVariables_mas[Id].duty[2]  = (uint32_t) mcPwm_StateVariables_mas[Id].tb_f32;
+               mcPwm_SvpwmTimeCalculation( &mcPwm_StateVariables_mas[Id ], (float)mcPwm_Parameters_mas[Id].period );
+               mcPwm_StateVariables_mas[Id].duty[0] = (uint16_t)mcPwm_StateVariables_mas[Id].tc_f32;
+               mcPwm_StateVariables_mas[Id].duty[1]  = (uint16_t)mcPwm_StateVariables_mas[Id].ta_f32;
+               mcPwm_StateVariables_mas[Id].duty[2]  = (uint16_t)mcPwm_StateVariables_mas[Id].tb_f32;
             }
             else
             {
                // Sector 1: (0,0,1)  60-120 degrees              
                mcPwm_StateVariables_mas[Id].t1_f32 = -mcPwm_StateVariables_mas[Id].ub_df32;
                mcPwm_StateVariables_mas[Id].t2_f32 = -mcPwm_StateVariables_mas[Id].uc_df32;
-               mcPwm_SvpwmTimeCalculation( &mcPwm_StateVariables_mas[Id ], mcPwm_Parameters_mas[Id].period );
-               mcPwm_StateVariables_mas[Id].duty[0] = (uint32_t) mcPwm_StateVariables_mas[Id].tb_f32;
-               mcPwm_StateVariables_mas[Id].duty[1]  = (uint32_t) mcPwm_StateVariables_mas[Id].ta_f32;
-               mcPwm_StateVariables_mas[Id].duty[2]  = (uint32_t) mcPwm_StateVariables_mas[Id].tc_f32;
+               mcPwm_SvpwmTimeCalculation( &mcPwm_StateVariables_mas[Id ], (float)mcPwm_Parameters_mas[Id].period );
+               mcPwm_StateVariables_mas[Id].duty[0] = (uint16_t)mcPwm_StateVariables_mas[Id].tb_f32;
+               mcPwm_StateVariables_mas[Id].duty[1]  = (uint16_t)mcPwm_StateVariables_mas[Id].ta_f32;
+               mcPwm_StateVariables_mas[Id].duty[2]  = (uint16_t)mcPwm_StateVariables_mas[Id].tc_f32;
             }
            }
       }
       else
       {
             // (xx0)
-            if(  mcPwm_StateVariables_mas[Id].ub_df32 >= 0 )
+            if(  mcPwm_StateVariables_mas[Id].ub_df32 >= 0.0f )
             {
                   // (x10)
-                  if(  mcPwm_StateVariables_mas[Id].uc_df32 >= 0 )
+                  if(  mcPwm_StateVariables_mas[Id].uc_df32 >= 0.0f )
                   {
                         // Sector 6: (1,1,0)  240-300 degrees
                         mcPwm_StateVariables_mas[Id].t1_f32 = mcPwm_StateVariables_mas[Id].uc_df32;
                         mcPwm_StateVariables_mas[Id].t2_f32 = mcPwm_StateVariables_mas[Id].ub_df32;
-                        mcPwm_SvpwmTimeCalculation( &mcPwm_StateVariables_mas[Id ], mcPwm_Parameters_mas[Id].period );
-                        mcPwm_StateVariables_mas[Id].duty[0] = (uint32_t) mcPwm_StateVariables_mas[Id].tb_f32;
-                        mcPwm_StateVariables_mas[Id].duty[1]  = (uint32_t) mcPwm_StateVariables_mas[Id].tc_f32;
-                        mcPwm_StateVariables_mas[Id].duty[2]  = (uint32_t) mcPwm_StateVariables_mas[Id].ta_f32 ;
+                        mcPwm_SvpwmTimeCalculation( &mcPwm_StateVariables_mas[Id ], (float)mcPwm_Parameters_mas[Id].period );
+                        mcPwm_StateVariables_mas[Id].duty[0] = (uint16_t)mcPwm_StateVariables_mas[Id].tb_f32;
+                        mcPwm_StateVariables_mas[Id].duty[1]  = (uint16_t)mcPwm_StateVariables_mas[Id].tc_f32;
+                        mcPwm_StateVariables_mas[Id].duty[2]  = (uint16_t)mcPwm_StateVariables_mas[Id].ta_f32 ;
                   }
                   else
                   {
                         // Sector 2: (0,1,0)  300-0 degrees
                         mcPwm_StateVariables_mas[Id].t1_f32 = -mcPwm_StateVariables_mas[Id].uc_df32;
                         mcPwm_StateVariables_mas[Id].t2_f32 = -mcPwm_StateVariables_mas[Id].ua_df32;
-                        mcPwm_SvpwmTimeCalculation( &mcPwm_StateVariables_mas[Id ], mcPwm_Parameters_mas[Id].period );
-                        mcPwm_StateVariables_mas[Id].duty[0] = (uint32_t) mcPwm_StateVariables_mas[Id].ta_f32;
-                        mcPwm_StateVariables_mas[Id].duty[1]  = (uint32_t) mcPwm_StateVariables_mas[Id].tc_f32;
-                        mcPwm_StateVariables_mas[Id].duty[2]  = (uint32_t) mcPwm_StateVariables_mas[Id].tb_f32;
+                        mcPwm_SvpwmTimeCalculation( &mcPwm_StateVariables_mas[Id ], (float)mcPwm_Parameters_mas[Id].period );
+                        mcPwm_StateVariables_mas[Id].duty[0] = (uint16_t)mcPwm_StateVariables_mas[Id].ta_f32;
+                        mcPwm_StateVariables_mas[Id].duty[1]  = (uint16_t)mcPwm_StateVariables_mas[Id].tc_f32;
+                        mcPwm_StateVariables_mas[Id].duty[2]  = (uint16_t)mcPwm_StateVariables_mas[Id].tb_f32;
                   }
             }
             else
@@ -242,19 +245,19 @@ void mcPwmI_PulseWidthModulationRun( const tmcPwm_InstanceId_e Id )
                   // Sector 4: (1,0,0)  180-240 degrees
                   mcPwm_StateVariables_mas[Id].t1_f32 = -mcPwm_StateVariables_mas[Id].ua_df32;
                   mcPwm_StateVariables_mas[Id].t2_f32 = -mcPwm_StateVariables_mas[Id].ub_df32;
-                  mcPwm_SvpwmTimeCalculation( &mcPwm_StateVariables_mas[Id ], mcPwm_Parameters_mas[Id].period );
-                  mcPwm_StateVariables_mas[Id].duty[0] = (uint32_t) mcPwm_StateVariables_mas[Id].tc_f32;
-                  mcPwm_StateVariables_mas[Id].duty[1]  = (uint32_t) mcPwm_StateVariables_mas[Id].tb_f32;
-                  mcPwm_StateVariables_mas[Id].duty[2]  = (uint32_t) mcPwm_StateVariables_mas[Id].ta_f32;
+                  mcPwm_SvpwmTimeCalculation( &mcPwm_StateVariables_mas[Id ], (float)mcPwm_Parameters_mas[Id].period );
+                  mcPwm_StateVariables_mas[Id].duty[0] = (uint16_t)mcPwm_StateVariables_mas[Id].tc_f32;
+                  mcPwm_StateVariables_mas[Id].duty[1]  = (uint16_t)mcPwm_StateVariables_mas[Id].tb_f32;
+                  mcPwm_StateVariables_mas[Id].duty[2]  = (uint16_t)mcPwm_StateVariables_mas[Id].ta_f32;
             }
       }
     
          /* Update PWM timers */
-     mcPwm_StateVariables_mas[Id].duty[0] = mcPwm_Parameters_mas[Id].period -  mcPwm_StateVariables_mas[Id].duty[0];
-     mcPwm_StateVariables_mas[Id].duty[1] = mcPwm_Parameters_mas[Id].period -  mcPwm_StateVariables_mas[Id].duty[1];
-     mcPwm_StateVariables_mas[Id].duty[2] = mcPwm_Parameters_mas[Id].period -  mcPwm_StateVariables_mas[Id].duty[2];
+     mcPwm_StateVariables_mas[Id].duty[0] = (uint16_t)(mcPwm_Parameters_mas[Id].period -  (uint32_t)mcPwm_StateVariables_mas[Id].duty[0]);
+     mcPwm_StateVariables_mas[Id].duty[1] = (uint16_t)(mcPwm_Parameters_mas[Id].period -  (uint32_t)mcPwm_StateVariables_mas[Id].duty[1]);
+     mcPwm_StateVariables_mas[Id].duty[2] = (uint16_t)(mcPwm_Parameters_mas[Id].period -  (uint32_t)mcPwm_StateVariables_mas[Id].duty[2]);
 
-     mcHalI_VoltageSourceInverterPwmSet( Id, &mcPwm_StateVariables_mas[Id].duty[0] );
+     mcHalI_VSI_PwmSet( (tmcHal_InverterInstanceId_e)Id, &mcPwm_StateVariables_mas[Id].duty[0] );
     
     /* Write output ports */
     

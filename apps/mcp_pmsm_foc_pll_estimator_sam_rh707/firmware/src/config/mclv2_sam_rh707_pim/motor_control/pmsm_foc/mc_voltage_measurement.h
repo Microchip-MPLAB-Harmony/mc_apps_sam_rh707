@@ -129,7 +129,7 @@
  User defined data-types
  *******************************************************************************/
 
-typedef enum _tmcVol_InstanceId_e
+typedef enum 
 {
     volModuleInstance_01,
     volModuleInstance_02,
@@ -137,33 +137,33 @@ typedef enum _tmcVol_InstanceId_e
 }tmcVol_InstanceId_e;
 
 
-typedef struct _tmcVol_InputPorts_s
+typedef struct
 {
     volatile uint16_t * sensorInput;
 }tmcVol_InputPorts_s;
 
 
-typedef struct _tmcVol_OutputPorts_s
+typedef struct
 {
     float * busVoltage;
     float * filteredBusVoltage;
     float * maximumUacPeak;
 }tmcVol_OutputPorts_s;
 
-typedef struct _tmcVol_UserParameters_s
+typedef struct
 {
     
     float adcToVoltage;
     float busVoltageFiltParam;
 }tmcVol_UserParameters_s;
 
-typedef struct _tmcVol_Dependencies_s
+typedef struct
 {
     
 }tmcVol_Dependencies_s;
 
 
-typedef struct _tmcVol_ConfigParameters_s
+typedef struct
 {
     /* Instance Identifier */
     uint8_t Id;

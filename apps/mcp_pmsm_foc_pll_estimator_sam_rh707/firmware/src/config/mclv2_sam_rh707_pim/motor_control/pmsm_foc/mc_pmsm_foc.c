@@ -164,21 +164,6 @@ void PMSM_FOC_MotorSpeedGet(void)
 }
 
 
-/*! \brief Configure thread tasks 
- * 
- * Details.
- * Configure thread tasks 
- * 
- * @param[in]: 
- * @param[in/out]:
- * @param[out]:
- * @return:
- */
-void PMSM_FOC_ThreadTasksConfig(void)
-{
-    
-}
-
 /*! \brief Run thread tasks 
  * 
  * Details.

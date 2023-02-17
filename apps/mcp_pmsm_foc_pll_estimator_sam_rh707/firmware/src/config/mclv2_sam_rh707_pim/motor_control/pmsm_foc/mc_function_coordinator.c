@@ -50,10 +50,10 @@ Headers inclusions
 /*******************************************************************************
  * Constants 
  *******************************************************************************/
-#define INTERRUPT_COUNTS_IN_1MS        ( uint32_t )( 0.001f * PWM_FREQUENCY + 0.5f )
-#define INTERRUPT_COUNTS_IN_10MS      ( uint32_t )( 0.010f * PWM_FREQUENCY + 0.5f )
-#define INTERRUPT_COUNTS_IN_100MS    ( uint32_t )( 0.100f * PWM_FREQUENCY + 0.5f )
-#define INTERRUPT_COUNTS_IN_1000MS  ( uint32_t )( 1.000f * PWM_FREQUENCY + 0.5f )
+#define INTERRUPT_COUNTS_IN_1MS        ( uint32_t )((float)( 0.001f * PWM_FREQUENCY + 0.5f ))
+#define INTERRUPT_COUNTS_IN_10MS      ( uint32_t )((float)( 0.010f * PWM_FREQUENCY + 0.5f ))
+#define INTERRUPT_COUNTS_IN_100MS    ( uint32_t )((float)( 0.100f * PWM_FREQUENCY + 0.5f ))
+#define INTERRUPT_COUNTS_IN_1000MS  ( uint32_t )((float)( 1.000f * PWM_FREQUENCY + 0.5f ))
 
 /*******************************************************************************
  Private data-types 
@@ -73,7 +73,7 @@ static uint8_t mcFco_1msInterruptSyncPulse_mdu8 = 0u;
 static uint8_t mcFco_10msInterruptSyncPulse_mdu8 = 0u;
 static uint8_t mcFco_100msInterruptSyncPulse_mdu8 = 0u;
 static uint8_t mcFco_1000msInterruptSyncPulse_mdu8 = 0u;
-
+static uintptr_t dummyforMisra;
 
 /*******************************************************************************
  Interface variables 
@@ -189,7 +189,7 @@ void mcFcoI_M1PhaseCurrentSensorCalib( uint32_t status, uintptr_t context )
     }
     else
     {
-        mcHalI_AdcCallBackRegister( (ADC_CALLBACK)mcFcoI_MotorAInterruptTasksRun, (uintptr_t)NULL );
+        mcHalI_AdcCallBackRegister( (ADC_CALLBACK)mcFcoI_MotorAInterruptTasksRun, (uintptr_t)dummyforMisra );
     }
 }
 
@@ -210,52 +210,21 @@ void mcFocI_M1ControlHardwareInit( void )
     mcHalI_AdcInterruptClear();
 
     /* Enable ADC interrupt for field oriented control */
-    mcHalI_AdcCallBackRegister(  (ADC_CALLBACK)mcFcoI_M1PhaseCurrentSensorCalib, (uintptr_t)NULL );
+    mcHalI_AdcCallBackRegister(  (ADC_CALLBACK)mcFcoI_M1PhaseCurrentSensorCalib, (uintptr_t)dummyforMisra );
     mcHalI_AdcInterruptEnable( );
-    mcHalI_ADCEnable();
     
     /* Enable interrupt for fault detection */
-    mcHalI_PwmCallbackRegister( (TCC_CALLBACK)mcErr_FaultControlISR, (uintptr_t)NULL );
+    mcHalI_PwmCallbackRegister( (TCC_CALLBACK)mcErr_FaultControlISR, (uintptr_t)dummyforMisra );
     mcHalI_PwmInterruptEnable( );
 
     /* Enables PWM channels. */
     mcHalI_PwmTimerStart( );
     
     /* Disable PWM output */
-    mcHalI_VoltageSourceInverterPwmDisable();
+    mcHalI_VSI_PwmDisable();
      
  }
 
-
- /*! \brief Motor control application calibration
- * 
- * Details.
- *  Motor Control application calibration 
- * 
- * @param[in]: 
- * @param[in/out]:
- * @param[out]:
- * @return:
- */
-void mcFcoI_M2CurrentSensorCalib( uint32_t status, uintptr_t context )
-{
-    
-}
-
-/*! \brief Motor control application calibration
- * 
- * Details.
- *  Motor Control application calibration 
- * 
- * @param[in]: 
- * @param[in/out]:
- * @param[out]:
- * @return:
- */
-void mcFocI_M2ControlHardwareInit( void )
- {
-   
- }
 
 
 /*******************************************************************************
@@ -300,7 +269,7 @@ void mcFcoI_MotorAInterruptTasksRun( uint32_t status, uintptr_t context )
 	
     
     /* Voltage measurement */
-    mcVolI_VoltageCalculationRun( 0u );
+    mcVolI_VoltageCalculationRun( (tmcVol_InstanceId_e)0u );
     
     /* Motor A Control tasks  */
     mcMocI_M1ControlTasksRun(  );
@@ -469,8 +438,8 @@ void mcFcoI_1000msThreadTasksRun( void )
 
 void mcFcoI_ButtonPolling(void)
 {
-        mcHal_ButtonResponse((tmcHal_ButtonState_e)(!BUTTON_01_Get()), &PMSM_FOC_MotorStartStop);
+        mcHal_ButtonResponse((tmcHal_ButtonState_e)(!(bool)BUTTON_01_Get()), &PMSM_FOC_MotorStartStop);
 
-        mcHal_ButtonResponse((tmcHal_ButtonState_e)(!BUTTON_02_Get()), &PMSM_FOC_DirectionToggle);
+        mcHal_ButtonResponse((tmcHal_ButtonState_e)(!(bool)BUTTON_02_Get()), &PMSM_FOC_DirectionToggle);
 
 }

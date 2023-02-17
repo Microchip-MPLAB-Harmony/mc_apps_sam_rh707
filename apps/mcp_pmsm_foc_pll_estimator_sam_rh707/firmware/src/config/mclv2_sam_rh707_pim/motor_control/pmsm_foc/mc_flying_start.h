@@ -198,7 +198,7 @@
 /*******************************************************************************
 Type Definition
 *******************************************************************************/
-typedef enum _tmcFly_InstanceId_e
+typedef enum
 {
     flyModuleInstance_01,
     flyModuleInstance_02,
@@ -212,7 +212,7 @@ typedef struct
     volatile int8_t  * rotationSign;
 }tmcFly_InputPorts_s;
 
-typedef struct _tmcFly_UserParameters_s 
+typedef struct 
 {
     float detectTime;
     float minRpmForFlyingStart;
@@ -231,7 +231,7 @@ typedef struct
 }tmcFly_OutputPorts_s;
 
 
-typedef struct _tmcFly_ConfigParameters_s 
+typedef struct
 {
     /* Instance Id */
     tmcFly_InstanceId_e Id; 

@@ -56,13 +56,13 @@ Headers inclusions
  Private data-types 
  *******************************************************************************/
 
-typedef struct _tmcVol_Parameters_s
+typedef struct
 {
     float adcToVoltage;
     float dcVoltageFiltParam;
 }tmcVol_Parameters_s;
 
-typedef struct  _tmcVol_StateVariables_s
+typedef struct
 {
     float dcBusVoltage;
 }tmcVol_StateVariables_s;
@@ -101,7 +101,9 @@ static void mcVol_EulerFilter( float input, float * out, float filterParam )
     *out = *out + filterParam * ( input - (*out ));
 }
 
-#define ASSERT(expression, message) { if(!expression) mcVol_AssertionFailedReaction( message);}
+#define ASSERT( expression, message ) if(!expression){uint8_t status_e;\
+                                          status_e=(uint8_t)((tStd_ReturnType_e)mcVol_AssertionFailedReaction(message));\
+                                          if(status_e==(uint8_t)returnType_Failed){/*Error log*/}}
 
 /*******************************************************************************
  Interface Functions 
@@ -154,7 +156,7 @@ tStd_ReturnType_e  mcVolI_VoltageCalculationInit( tmcVol_ConfigParameters_s * vo
 void mcVolI_VoltageCalculationRun( const tmcVol_InstanceId_e Id )
 {     
     /* Calculate DC bus voltage */
-    *mcVol_OutputPorts_mas[Id].busVoltage =  ( *mcVol_InputPorts_mas[Id].sensorInput )
+    *mcVol_OutputPorts_mas[Id].busVoltage =  ( (float)*mcVol_InputPorts_mas[Id].sensorInput )
                                                                     *  mcVol_Parameters_mas[Id].adcToVoltage ;
     
     mcVol_EulerFilter( *mcVol_OutputPorts_mas[Id].busVoltage,  mcVol_OutputPorts_mas[Id].filteredBusVoltage,

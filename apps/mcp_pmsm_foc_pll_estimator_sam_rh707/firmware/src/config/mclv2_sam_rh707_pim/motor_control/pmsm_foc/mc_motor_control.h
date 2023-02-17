@@ -57,9 +57,11 @@
 #include "mc_start_up.h"
 #include "mc_rotor_position.h"
 #include "mc_speed_control.h"
-#if ( ENABLE == ENABLE_FLYING_START )
-#include "mc_flying_start.h"
+#ifdef ENABLE_FLYING_START
+#if ( ENABLE_FLYING_START == ENABLE )
+   #include "mc_flying_start.h"
 #endif
+#endif 
 #if ( ENABLE == ENABLE_FLUX_WEAKENING )
 #include "mc_flux_control.h"
 #endif

@@ -171,20 +171,20 @@
  User defined data-types
  *******************************************************************************/
 
-typedef enum _tmcSup_InstanceId_e
+typedef enum
 {
     supModuleInstance_01,
     supModuleInstance_02,
     supModuleInstance_max 
 }tmcSup_InstanceId_e;
 
-typedef struct _tmcSup_InputPorts_s
+typedef struct
 {
  
 }tmcSup_InputPorts_s;
 
 
-typedef struct _tmcSup_OutputPorts_s
+typedef struct
 {
     float * Idref;
     float * Iqref;
@@ -192,7 +192,7 @@ typedef struct _tmcSup_OutputPorts_s
 }tmcSup_OutputPorts_s;
 
 
-typedef struct _tmcSup_UserParameters_s
+typedef struct
 {
     float alignmentTime;
     float alignmentCurrent;
@@ -203,13 +203,13 @@ typedef struct _tmcSup_UserParameters_s
     float Ts;
 }tmcSup_UserParameters_s;
 
-typedef struct _tmcSup_Dependencies_s
+typedef struct
 {
     
 }tmcSup_Dependencies_s;
 
 
-typedef struct _tmcSup_ConfigParameters_s
+typedef struct
 {
     /* Instance Identifier */
     uint8_t Id;

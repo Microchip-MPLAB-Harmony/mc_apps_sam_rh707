@@ -116,8 +116,8 @@
         }, \
         /* User Parameters */ \
         {\
-              1900, \
-              2200, \
+              1900.0f, \
+              2200.0f, \
               ADC_CURRENT_SCALE \
         }\
     }\
@@ -151,41 +151,41 @@
 /*******************************************************************************
  User defined data-types
  *******************************************************************************/
-typedef enum _tmcCur_InstanceId_e
+typedef enum tmcCur_InstanceId
 {
     curModuleInstance_01,
     curModuleInstance_02,
     CurModuleInstance_max 
 }tmcCur_InstanceId_e;
 
-typedef struct _tmcCur_InputPorts_s
+typedef struct tmcCur_InputPorts
 {
     uint16_t * iaAdcInput;
     uint16_t * ibAdcInput;
 }tmcCur_InputPorts_s;
 
 
-typedef struct _tmcCur_PhaseCurrents_s
+typedef struct tmcCur_PhaseCurrents
 {
     float * ia;
     float * ib;
     float * ic;
 }tmcCur_PhaseCurrents_s;
 
-typedef struct _tmcCur_OutputPorts_s
+typedef struct tmcCur_OutputPorts
 {
     tmcCur_PhaseCurrents_s  phaseCurrents;
     uint8_t * calibDone;
 }tmcCur_OutputPorts_s;
 
-typedef struct _tmcCur_UserParameters_s
+typedef struct tmcCur_UserParameter
 {
    float minOffset;
    float maxOffset;
    float adcToCurrent;
 }tmcCur_UserParameters_s;
 
-typedef struct _tmcCur_ConfigParameters_s
+typedef struct tmcCur_ConfigParameters
 {
    /* Instance Id */
     uint8_t Id;

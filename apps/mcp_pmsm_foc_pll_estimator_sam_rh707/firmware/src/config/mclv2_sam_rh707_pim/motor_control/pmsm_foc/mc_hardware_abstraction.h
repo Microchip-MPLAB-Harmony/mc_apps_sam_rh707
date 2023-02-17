@@ -90,7 +90,7 @@ typedef struct
     uint32_t debounceCounter;
 }tmcHal_ButtonState_s;
 
-typedef enum _tmcHal_InverterInstanceId_e
+typedef enum
 {
     inverterInstance_01,
     inverterInstance_02,
@@ -119,7 +119,7 @@ typedef enum _tmcHal_InverterInstanceId_e
  * @param[out]:
  * @return:
  */
-void mcHalI_VoltageSourceInverterPwmSet( tmcHal_InverterInstanceId_e Id,  uint16_t * duty );
+void mcHalI_VSI_PwmSet( tmcHal_InverterInstanceId_e Id,  uint16_t * duty );
 
 
 /*! \brief Disable PWM Channels of the voltage source inverter
@@ -132,7 +132,7 @@ void mcHalI_VoltageSourceInverterPwmSet( tmcHal_InverterInstanceId_e Id,  uint16
  * @param[out]:
  * @return:
  */
-void mcHalI_VoltageSourceInverterPwmDisable(void);
+void mcHalI_VSI_PwmDisable(void);
 
 
 /*! \brief Enable PWM Channels of the voltage source inverter
@@ -145,7 +145,7 @@ void mcHalI_VoltageSourceInverterPwmDisable(void);
  * @param[out]:
  * @return:
  */
-void mcHalI_VoltageSourceInverterPwmEnable(void);
+void mcHalI_VSI_PwmEnable(void);
 
 /*! \brief Get voltage signal from ADC port
  * 
@@ -210,17 +210,6 @@ uint16_t mcHalI_PotentiometerSignalGet( void );
  */
 void mcHal_ButtonResponse( const tmcHal_ButtonState_e  buttonState,  void (*buttonFunction)(void) );
 
-/*! \brief ADC Enable
- * 
- * Details.
- * ADC Enable
- * 
- * @param[in]: 
- * @param[in/out]:
- * @param[out]:
- * @return:
- */
-void mcHalI_ADCEnable( void );
 
 /*! \brief Get analog signals from ADC peripheral
  * 

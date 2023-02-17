@@ -77,7 +77,7 @@ Headers inclusions
 /*******************************************************************************
  Private data-types  
  *******************************************************************************/
-typedef struct _tmcRmp_ReferenceGenerator_s
+typedef struct 
 {
     tmcRmp_ReferenceProfile_e profileType;
     float inputValue; 
@@ -161,7 +161,7 @@ void mcRmpI_ReferenceProfileInit( tmcRmp_RampProfilerConfig_s * pParam )
 
 void mcRmpI_ReferenceProfileInputCommand( int16_t commandValue )
 {
-     mcRmp_StateVariables_mds.inputValue = commandValue;
+     mcRmp_StateVariables_mds.inputValue = (float)commandValue;
 }
 
 
@@ -179,7 +179,7 @@ int16_t mcRmpI_ReferenceProfileGenerate( void )
 		
           case referenceProfile_Linear:
           {
-               int32_t s32a;
+               float s32a;
                               
 	     /* Update reference input if there has been a change */
                s32a = 2.0f * ( mcRmp_StateVariables_mds.inputValue - mcRmp_StateVariables_mds.currentValue );
@@ -200,12 +200,12 @@ int16_t mcRmpI_ReferenceProfileGenerate( void )
 				
 	default:
 	{
-			
+		/* Undefined state: Should never come here */	
 	}
 	break;
     }
     #endif
-    return mcRmp_StateVariables_mds.currentValue;
+    return (int16_t)mcRmp_StateVariables_mds.currentValue;
 
 }
 

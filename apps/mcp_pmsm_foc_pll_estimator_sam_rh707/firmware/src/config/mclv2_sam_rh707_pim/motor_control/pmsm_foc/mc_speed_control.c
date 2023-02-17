@@ -66,7 +66,7 @@
 /*******************************************************************************
  Private data-types 
  *******************************************************************************/
-typedef struct _tmcSpe_Parameters_s
+typedef struct
 {
     float adcCountToSpeed;
     float refSpeedFiltParam;
@@ -74,7 +74,7 @@ typedef struct _tmcSpe_Parameters_s
     float maxReferenceSpeed;
 }tmcSpe_Parameters_s;
 
-typedef struct _tmcSpe_StateVariables_s
+typedef struct
 {
     float referenceSpeed;
 }tmcSpe_StateVariables_s;
@@ -110,7 +110,7 @@ static tStd_ReturnType_e mcSpe_AssertionFailedReaction( const char * message )
 }
 
 
-void mcSpe_LinearRamping( float * pInput, const float rampRate, float Final )
+static void mcSpe_LinearRamping( float * pInput, const float rampRate, float Final )
 {
     if( *pInput < ( Final - rampRate ))
     {
@@ -127,7 +127,7 @@ void mcSpe_LinearRamping( float * pInput, const float rampRate, float Final )
 }
 
 
-void mcSpe_MinimumLimitSet( float * value, float minLimit )
+static void mcSpe_MinimumLimitSet( float * value, float minLimit )
 {
     if( *value < minLimit ) 
     {
@@ -135,7 +135,9 @@ void mcSpe_MinimumLimitSet( float * value, float minLimit )
     }
 }
 
-#define ASSERT( expression, message ) {if(!expression)mcSpe_AssertionFailedReaction(message);}
+#define ASSERT( expression, message ) if(!expression){uint8_t status_e;\
+                                          status_e=(uint8_t)((tStd_ReturnType_e)mcSpe_AssertionFailedReaction(message));\
+                                          if(status_e==(uint8_t)returnType_Failed){/*Error log*/}}
 
 /*******************************************************************************
  Interface Functions 
@@ -220,9 +222,9 @@ void mcSpeI_SpeedRegulationRun( const tmcSpe_InstanceId_e Id )
         float refSpeed;
         
         /* Calculate reference speed */
-        refSpeed  = *mcSpe_InputPorts_mas[Id].potReading * mcSpe_Parameters_mas[Id].adcCountToSpeed;
+        refSpeed  = (float)*mcSpe_InputPorts_mas[Id].potReading * mcSpe_Parameters_mas[Id].adcCountToSpeed;
         mcSpe_MinimumLimitSet( &refSpeed,  mcSpe_Parameters_mas[Id].minReferenceSpeed );
-        refSpeed *= mcMocI_RotationSign_gas8[Id];
+        refSpeed *= (float)mcMocI_RotationSign_gas8[Id];
         mcSpe_LinearRamping(mcSpe_OutputPorts_mas[Id].referenceSpeed, CONFIG_RampRate, refSpeed);
     #else
         float refSpeed;

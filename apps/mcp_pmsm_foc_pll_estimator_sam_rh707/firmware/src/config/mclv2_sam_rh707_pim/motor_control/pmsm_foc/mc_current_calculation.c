@@ -47,13 +47,13 @@
 /*******************************************************************************
  Private constants 
  *******************************************************************************/
-#define OFFSET_SAMPLES    128
+#define OFFSET_SAMPLES    128u
 
 /*******************************************************************************
  Private data-types 
  *******************************************************************************/
 
-typedef struct _mcCur_StateVariables_s
+typedef struct mcCur_StateVariables_s
 {
     uint8_t  calibDone;
     uint16_t  adcSampleCounter;
@@ -63,7 +63,7 @@ typedef struct _mcCur_StateVariables_s
     uint16_t ibOffset;
 }tmcCur_StateVariables_s;
 
-typedef struct _tmcCur_Parameters_s
+typedef struct tmcCur_Parameters_s
 {
    float minOffset;
    float maxOffset;
@@ -88,7 +88,9 @@ static tStd_ReturnType_e mcCur_AssertionFailedReaction( const char * message )
     return returnType_Failed;
 }
 
-#define ASSERT(expression, message ) { if(!expression)mcCur_AssertionFailedReaction( message);}
+#define ASSERT( expression, message ) if(!expression){uint8_t status_e;\
+                                          status_e=(uint8_t)((tStd_ReturnType_e)mcCur_AssertionFailedReaction(message));\
+                                          if(status_e==(uint8_t)returnType_Failed){/*Error log*/}}
 
 /*******************************************************************************
  Interface variables 
@@ -168,8 +170,8 @@ void mcCurI_CurrentSensorOffsetCalculate( const uint8_t Id )
     else
     {
 
-        mcCur_StateVariables_mas[Id].iaOffset = (float)(mcCur_StateVariables_mas[Id].iaOffsetBuffer/OFFSET_SAMPLES);
-        mcCur_StateVariables_mas[Id].ibOffset = (float)(mcCur_StateVariables_mas[Id].ibOffsetBuffer/OFFSET_SAMPLES);
+        mcCur_StateVariables_mas[Id].iaOffset = (uint16_t)(mcCur_StateVariables_mas[Id].iaOffsetBuffer/OFFSET_SAMPLES);
+        mcCur_StateVariables_mas[Id].ibOffset = (uint16_t)(mcCur_StateVariables_mas[Id].ibOffsetBuffer/OFFSET_SAMPLES);
         
         /*Set ADC Calibration Done Flag*/
         *mcCur_OutputPorts_mas[Id].calibDone = 1u;
@@ -190,13 +192,13 @@ void mcCurI_CurrentSensorOffsetCalculate( const uint8_t Id )
 void mcCurI_CurrentCalculationRun( const tmcCur_InstanceId_e Id )
 {    
      /* Phase A current measurement */
-    *mcCur_OutputPorts_mas[Id].phaseCurrents.ia  = ( mcCur_StateVariables_mas[0u].iaOffset );
-    *mcCur_OutputPorts_mas[Id].phaseCurrents.ia -= (*mcCur_InputPorts_mas[0u].iaAdcInput ); 
+    *mcCur_OutputPorts_mas[Id].phaseCurrents.ia  = (float)( mcCur_StateVariables_mas[0u].iaOffset );
+    *mcCur_OutputPorts_mas[Id].phaseCurrents.ia -= (float)(*mcCur_InputPorts_mas[0u].iaAdcInput ); 
     *mcCur_OutputPorts_mas[Id].phaseCurrents.ia *= ( mcCur_Parameters_mas[0u].adcToCurrent );
     
     /* Phase B current measurement */
-    *mcCur_OutputPorts_mas[Id].phaseCurrents.ib  = ( mcCur_StateVariables_mas[0u].ibOffset );
-    *mcCur_OutputPorts_mas[Id].phaseCurrents.ib -= (*mcCur_InputPorts_mas[0u].ibAdcInput ); 
+    *mcCur_OutputPorts_mas[Id].phaseCurrents.ib  = (float)( mcCur_StateVariables_mas[0u].ibOffset );
+    *mcCur_OutputPorts_mas[Id].phaseCurrents.ib -= (float)(*mcCur_InputPorts_mas[0u].ibAdcInput ); 
     *mcCur_OutputPorts_mas[Id].phaseCurrents.ib *= ( mcCur_Parameters_mas[0u].adcToCurrent );
     
     /* Calculate phase W current by Kirchhoff's principle  */

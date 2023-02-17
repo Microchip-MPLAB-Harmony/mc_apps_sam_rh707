@@ -64,16 +64,16 @@
 #define     ONE_BY_SQRT3                     (float)(0.5773502691)
 #define     TWO_BY_SQRT3                     (float)(1.1547005384)
 #define     TOTAL_SINE_TABLE_ANGLE           (float)(2.0f * (float)M_PI)
-#define     TABLE_SIZE                       256
+#define     TABLE_SIZE                       256U
 #define     ANGLE_STEP                       (TOTAL_SINE_TABLE_ANGLE/(float)TABLE_SIZE)
-#define     ONE_BY_ANGLE_STEP                (1/ANGLE_STEP)
+#define     ONE_BY_ANGLE_STEP                (1.0f/ANGLE_STEP)
 
 
 /*******************************************************************************
  User defined data-types  
  *******************************************************************************/
 
-typedef struct _tmcLib_PiControllerParameter_s
+typedef struct
 {
      /* Proportional gain */
     float Kp;
@@ -93,7 +93,7 @@ typedef struct _tmcLib_PiControllerParameter_s
 }tmcLib_PiControllerParameter_s;
 
 
-typedef struct _tmcLib_PiController_s
+typedef struct
 {
     /* Reference Signal */
     float reference;

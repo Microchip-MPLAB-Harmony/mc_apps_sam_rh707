@@ -50,7 +50,7 @@
 /*******************************************************************************
  User defined data-types
  *******************************************************************************/
-typedef struct _tmcInf_ThreePhaseQuantity_s
+typedef struct
 {
     float a;
     float b;
@@ -71,9 +71,11 @@ typedef struct
 
 typedef enum
 {
-#if ( ENABLE == ENABLE_FLYING_START )
+#ifdef ENABLE_FLYING_START
+#if ( ENABLE_FLYING_START == ENABLE )
     mcState_FlyingStart,
 #endif
+#endif 
     mcState_Startup,
     mcState_StartupToFoc,
     mcState_Foc,
@@ -81,7 +83,7 @@ typedef enum
     mcState_Error
 }tmcMoc_ControlStates_e;
 
-typedef enum _tStd_ReturnType_e
+typedef enum
 {
     returnType_Running = 0x0,
     returnType_Passed = 0x1u ,

@@ -177,6 +177,29 @@ void mcFcoI_1000msThreadTasksRun( void );
  */
 void mcFcoI_ButtonPolling( void );
 
+/*! \brief 
+ * 
+ * Details.
+ * 
+ * 
+ * @param[in]: 
+ * @param[in/out]:
+ * @param[out]:
+ * @return:
+ */
+void mcFco_InterruptAndThreadSync( void );
+
+/*! \brief Motor control application calibration
+ * 
+ * Details.
+ *  Motor Control application calibration 
+ * 
+ * @param[in]: 
+ * @param[in/out]:
+ * @param[out]:
+ * @return:
+ */
+void mcFocI_M1ControlHardwareInit( void );
 #endif //MCFOC_H
 
 /**

@@ -110,7 +110,7 @@
 /**
  *  PWM frequency in Hz                            
  */ 
-#define PWM_FREQUENCY   (20000u)
+#define PWM_FREQUENCY   (float)(20000u)
 
 /**
  *  Current control Frequency                           
@@ -148,12 +148,12 @@
 /**
  * Minimum close loop electrical speed of the motor in RPM
  */
-#define MINIMUM_SPEED_IN_RPM   (500) 
+#define MINIMUM_SPEED_IN_RPM   (500.0f) 
 
 /**
  * Number of pole pairs  
  */
-#define NUM_POLE_PAIRS  ((int16_t)5)  
+#define NUM_POLE_PAIRS  (5.0f)  
 
  /**
   *  Stator resistance in Ohm                      
@@ -178,7 +178,7 @@
  /** 
   * Air gap flux in Weber                   
   */
-#define  AIR_GAP_FLUX    (float)(  60 * MOTOR_BEMF_CONST_VOLTS_PER_KRPM_MECH / ( 1.414 * 1000 * M_PI ))
+#define  AIR_GAP_FLUX    (float)(  60.0f * MOTOR_BEMF_CONST_VOLTS_PER_KRPM_MECH / ( 1.414f * 1000.0f * (float)M_PI ))
 
  /** 
   * Maximum peak current of the motor in amperes                     
@@ -253,30 +253,30 @@
 /**
  * Forced alignment lock time 
  */ 
-#define START_UP_LOCK_TIME_IN_SECOND   (2) 
+#define START_UP_LOCK_TIME_IN_SECOND   (2.0f) 
 
 /**
   * Start-up current in amperes                          
   */
-#define START_UP_CURRENT_IN_AMPERE   (0.2) 
+#define START_UP_CURRENT_IN_AMPERE   (0.2f) 
 
 
 /**
  * Start-up ramp time
  */
-#define START_UP_RAMP_TIME_IN_SECOND   (5)
+#define START_UP_RAMP_TIME_IN_SECOND   (5.0f)
 
 
 /**
  * Start-up stabilization time
  */
-#define START_UP_STAB_TIME_IN_SECOND   (2)
+#define START_UP_STAB_TIME_IN_SECOND   (2.0f)
 
 
 /**
  * Start-up transition speed 
  */
-#define START_UP_TRANS_SPEED_IN_RPM    (500)
+#define START_UP_TRANS_SPEED_IN_RPM    (500.0f)
 
 #endif // USERPARAMS_H
 

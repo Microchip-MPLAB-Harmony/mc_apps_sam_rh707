@@ -91,14 +91,14 @@
 Type definitions
 *******************************************************************************/
 
-typedef enum _tmcRmp_ReferenceProfile_e
+typedef enum
 {
     referenceProfile_Step,
     referenceProfile_Linear,
     referenceProfile_Sigmoid
 }tmcRmp_ReferenceProfile_e;
   
-typedef struct _tmcRmp_ReferenceSpeed_s
+typedef struct
 {
     tmcRmp_ReferenceProfile_e profileType;
     float rampPerSec;
@@ -126,7 +126,7 @@ extern tmcRmp_RampProfilerConfig_s mcRmpI_RampProfilerConfig_mds;
  * @param[out]:
  * @return: None
  */
-void mcRmpI_ReferenceProfileInit( tmcRmp_RampProfilerConfig_s * rampProfile);
+void mcRmpI_ReferenceProfileInit( tmcRmp_RampProfilerConfig_s * pParam);
 
 /* !\brief Set new input
  * 
@@ -138,7 +138,7 @@ void mcRmpI_ReferenceProfileInit( tmcRmp_RampProfilerConfig_s * rampProfile);
  * @param[out]:
  * @return: None
  */
-void mcRmpI_ReferenceProfileInputCommand( int16_t commandRpm);
+void mcRmpI_ReferenceProfileInputCommand( int16_t commandValue);
 
 /* !\brief Generate ramp profile
  * 

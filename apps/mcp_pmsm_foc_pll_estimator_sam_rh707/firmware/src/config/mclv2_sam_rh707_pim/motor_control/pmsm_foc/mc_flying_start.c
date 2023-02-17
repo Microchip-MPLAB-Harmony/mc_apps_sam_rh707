@@ -53,12 +53,12 @@ Headers inclusions
 /*
  * RPM to Radians per second conversion factor 
  */
-#define RPM_TO_RADIANS_PER_SECOND  (float)( M_PI * NUM_POLE_PAIRS / 30.0f )
+#define RPM_TO_RADIANS_PER_SECOND  (float)( (float)M_PI * NUM_POLE_PAIRS / 30.0f )
 
 /*******************************************************************************
  Private data types
 *******************************************************************************/
-typedef enum _tmcFly_FlyingStartState_e
+typedef enum
 {
     flyingStart_Initialize,
     flyingStart_Detect,
@@ -108,18 +108,21 @@ Interface  variables
 *******************************************************************************/
 tmcFly_ConfigParameters_s mcFlyI_ConfigParameters_gas[1u] = { FLYING_START_MODULE_CONFIG };
 
-extern int32_t __aeabi_idiv(int32_t numerator, int32_t denominator);
+//extern int32_t __aeabi_idiv(int32_t numerator, int32_t denominator);
 
 /*******************************************************************************
 Private Functions
 *******************************************************************************/
-#define ASSERT(expression, message) if(!expression) mcFly_AssertFailedReaction( message);
-
-tStd_ReturnType_e mcFly_AssertFailedReaction( const char * message )
+static tStd_ReturnType_e mcFly_AssertFailedReaction( const char * message )
 {
     /*ToDo: Decide an appropriate error reaction */
      return returnType_Failed;
 }
+#define ASSERT( expression, message ) if(!expression){uint8_t status_e;\
+                                          status_e=(uint8_t)((tStd_ReturnType_e)mcFly_AssertFailedReaction(message));\
+                                          if(status_e==(uint8_t)returnType_Failed){/*Error log*/}}
+
+
 
 /*******************************************************************************
  * Interface Functions 
@@ -154,13 +157,13 @@ tStd_ReturnType_e  mcFlyI_FlyingStartInit(const tmcFly_ConfigParameters_s * cons
           
     /* Update and calculate independent and independent parameters respectively */ 
      
-    mcFly_Parameters_mas[0u].detectLoopCount = flyConfigParam->userParam.detectTime * PWM_FREQUENCY;
+    mcFly_Parameters_mas[0u].detectLoopCount = (uint32_t)((float)(flyConfigParam->userParam.detectTime * PWM_FREQUENCY));
     mcFly_Parameters_mas[0u].minSpeedForFlyingStart =  RPM_TO_RADIANS_PER_SECOND * flyConfigParam->userParam.minRpmForFlyingStart;
     mcFly_Parameters_mas[0u].flyingStartCurrent = flyConfigParam->userParam.flyingStartCurrentInAmps;
     mcFly_Parameters_mas[0u].brakeCurrent = flyConfigParam->userParam.brakeCurrenInAmps;
     mcFly_Parameters_mas[0u].brakeCurrentStep = flyConfigParam->userParam.brakeCurrentStepInAmps;
-    mcFly_Parameters_mas[0u].fadeOutLoopCount = flyConfigParam->userParam.fadeOutTime * PWM_FREQUENCY;
-    mcFly_Parameters_mas[0u].fadeOutBurstLoopCount = flyConfigParam->userParam.fadeOutBurstTime * PWM_FREQUENCY;
+    mcFly_Parameters_mas[0u].fadeOutLoopCount = (uint32_t)((float)(flyConfigParam->userParam.fadeOutTime * PWM_FREQUENCY));
+    mcFly_Parameters_mas[0u].fadeOutBurstLoopCount = (uint32_t)((float)(flyConfigParam->userParam.fadeOutBurstTime * PWM_FREQUENCY));
     mcFly_Parameters_mas[0u].halfFadeOutBurstLoopCount =  mcFly_Parameters_mas[0u].fadeOutBurstLoopCount >> 1u; 
  
     
@@ -194,8 +197,8 @@ tStd_ReturnType_e mcFlyI_FlyingStartRun( const tmcFly_InstanceId_e Id)
         case flyingStart_Initialize:
         {
             /* Initialize current controller parameters for flying start */
-            mcRegI_CurrentControllerParameterSet( Id, &mcFly_IdControlParamForFlyingStart_mas[Id]);
-            mcRegI_CurrentControllerParameterSet( Id, &mcFly_IqControlParamForFlyingStart_mas[Id]);
+            mcRegI_CurrentControllerParameterSet( (tmcReg_InstanceId_e)Id, &mcFly_IdControlParamForFlyingStart_mas[Id]);
+            mcRegI_CurrentControllerParameterSet( (tmcReg_InstanceId_e)Id, &mcFly_IqControlParamForFlyingStart_mas[Id]);
             
             /* Update flying start state */
             mcFly_StateVariables_mas[0u].flyingStartState = flyingStart_Detect;
@@ -227,7 +230,7 @@ tStd_ReturnType_e mcFlyI_FlyingStartRun( const tmcFly_InstanceId_e Id)
         case flyingStart_Decide:
         {
             /* Commanded speed and free running speed are same */
-            if( 0u < *mcFly_InputPorts_mas[0u].rotationSign  )
+            if( 0 < *mcFly_InputPorts_mas[0u].rotationSign  )
             {
                 /* Check if the rotor speed is above threshold for switching to close loop */
                 if(  *mcFly_InputPorts_mas[0u].observedElecVelocity   > mcFly_Parameters_mas[0u].minSpeedForFlyingStart )
@@ -236,7 +239,7 @@ tStd_ReturnType_e mcFlyI_FlyingStartRun( const tmcFly_InstanceId_e Id)
                     mcFly_StateVariables_mas[0u].completionStatus = returnType_Passed;
                     
                     /* Apply flying start current vector */
-                    *mcFly_OutputPorts_mas[0u].idRef = 0;
+                    *mcFly_OutputPorts_mas[0u].idRef = 0.0f;
                     *mcFly_OutputPorts_mas[0u].iqRef = mcFly_Parameters_mas[0u].flyingStartCurrent;                          
                 }
                 else
@@ -262,7 +265,7 @@ tStd_ReturnType_e mcFlyI_FlyingStartRun( const tmcFly_InstanceId_e Id)
                     mcFly_StateVariables_mas[0u].completionStatus = returnType_Passed;
                     
                      /* Apply flying start current vector */
-                    *mcFly_OutputPorts_mas[0u].idRef = 0;
+                    *mcFly_OutputPorts_mas[0u].idRef = 0.0f;
                     *mcFly_OutputPorts_mas[0u].iqRef = -mcFly_Parameters_mas[0u].flyingStartCurrent;                        
                 }
                 else
@@ -310,7 +313,7 @@ tStd_ReturnType_e mcFlyI_FlyingStartRun( const tmcFly_InstanceId_e Id)
             uint16_t dutyCycle[3u] = { 1200u, 1200u, 1200u};
             
             /* Set 50% duty ratio for the PWM inverter for active short */
-            mcHalI_VoltageSourceInverterPwmSet( 0u, dutyCycle );
+            mcHalI_VSI_PwmSet( (tmcHal_InverterInstanceId_e)0u, dutyCycle );
             
             if( mcFly_StateVariables_mas[0u].fadeOutCounter < mcFly_Parameters_mas[0u].fadeOutLoopCount )
             {
@@ -318,11 +321,11 @@ tStd_ReturnType_e mcFlyI_FlyingStartRun( const tmcFly_InstanceId_e Id)
                 mcFly_StateVariables_mas[0u].fadeOutBurstCounter++;
                 if( mcFly_StateVariables_mas[0u].fadeOutBurstCounter < mcFly_Parameters_mas[0u].halfFadeOutBurstLoopCount )
                 {
-                    mcHalI_VoltageSourceInverterPwmEnable( );
+                    mcHalI_VSI_PwmEnable( );
                 }
                 else if( mcFly_StateVariables_mas[0u].fadeOutBurstCounter < mcFly_Parameters_mas[0u].fadeOutBurstLoopCount )
                 {
-                    mcHalI_VoltageSourceInverterPwmDisable( );
+                    mcHalI_VSI_PwmDisable( );
                 }
                 else 
                 {
@@ -332,7 +335,7 @@ tStd_ReturnType_e mcFlyI_FlyingStartRun( const tmcFly_InstanceId_e Id)
             }
             else 
             {
-                mcHalI_VoltageSourceInverterPwmEnable( );
+                mcHalI_VSI_PwmEnable( );
                 mcFly_StateVariables_mas[0u].flyingStartState = flyingStart_Complete;
                 mcFly_StateVariables_mas[0u].fadeOutCounter  = 0u;
             }
@@ -342,8 +345,8 @@ tStd_ReturnType_e mcFlyI_FlyingStartRun( const tmcFly_InstanceId_e Id)
         case flyingStart_Complete:
         {
            /* Initialize current controller parameters for close loop */
-           mcRegI_CurrentControllerParameterSet( Id, &mcFly_IdControlParamForCloseLoop_mas[Id]);
-           mcRegI_CurrentControllerParameterSet( Id, &mcFly_IqControlParamForCloseLoop_mas[Id]);
+           mcRegI_CurrentControllerParameterSet( (tmcReg_InstanceId_e)Id, &mcFly_IdControlParamForCloseLoop_mas[Id]);
+           mcRegI_CurrentControllerParameterSet( (tmcReg_InstanceId_e)Id, &mcFly_IqControlParamForCloseLoop_mas[Id]);
             
            mcFly_StateVariables_mas[0u].flyingStartState = flyingStart_Initialize;
            completionStatus = mcFly_StateVariables_mas[0u].completionStatus;
@@ -354,6 +357,7 @@ tStd_ReturnType_e mcFlyI_FlyingStartRun( const tmcFly_InstanceId_e Id)
         {
             /* Should not come here */
         }
+        break;
         
     }
     
@@ -374,14 +378,14 @@ tStd_ReturnType_e mcFlyI_FlyingStartRun( const tmcFly_InstanceId_e Id)
 void mcFlyI_FlyingStartReset(const tmcFly_InstanceId_e Id)
 {
     /* Reset state variables */
-    mcFly_StateVariables_mas[0u].flyingStartState = 0u;
+    mcFly_StateVariables_mas[0u].flyingStartState = (tmcFly_FlyingStartState_e)0u;
     mcFly_StateVariables_mas[0u].detectCounter = 0u;
     mcFly_StateVariables_mas[0u].fadeOutCounter = 0u;
     mcFly_StateVariables_mas[0u].fadeOutBurstCounter = 0u;
     
     /* Reset output ports */
-   *mcFly_OutputPorts_mas[0u].idRef = 0;
-   *mcFly_OutputPorts_mas[0u].iqRef = 0;
+   *mcFly_OutputPorts_mas[0u].idRef = 0.0f;
+   *mcFly_OutputPorts_mas[0u].iqRef = 0.0f;
     
 }
 

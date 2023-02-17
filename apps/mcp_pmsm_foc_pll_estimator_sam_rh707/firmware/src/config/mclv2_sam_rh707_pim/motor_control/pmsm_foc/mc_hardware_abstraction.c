@@ -82,9 +82,9 @@ static tmcHal_ButtonState_s     mcHal_PressButtonState_mds;
  * @param[out]:
  * @return:
  */
-void mcHalI_VoltageSourceInverterPwmSet( tmcHal_InverterInstanceId_e Id, uint16_t * duty )
+void mcHalI_VSI_PwmSet( tmcHal_InverterInstanceId_e Id, uint16_t * duty )
 {
-    if( Id == 0u )
+    if( Id == inverterInstance_01 )
     {
 
             PWM0_ChannelDutySet(PWM_CHANNEL_0, duty[0] );
@@ -108,7 +108,7 @@ void mcHalI_VoltageSourceInverterPwmSet( tmcHal_InverterInstanceId_e Id, uint16_
  * @param[out]:
  * @return:
  */
-void mcHalI_VoltageSourceInverterPwmDisable(void)
+void mcHalI_VSI_PwmDisable(void)
 {
     PWM0_ChannelOverrideDisable( PWM_CHANNEL_0 );
     PWM0_ChannelOverrideDisable( PWM_CHANNEL_1 );
@@ -126,7 +126,7 @@ void mcHalI_VoltageSourceInverterPwmDisable(void)
  * @param[out]:
  * @return:
  */
-void mcHalI_VoltageSourceInverterPwmEnable(void)
+void mcHalI_VSI_PwmEnable(void)
 {
     PWM0_ChannelOverrideEnable( PWM_CHANNEL_0 );
     PWM0_ChannelOverrideEnable( PWM_CHANNEL_1 );
@@ -220,7 +220,7 @@ void mcHal_ButtonResponse( const tmcHal_ButtonState_e  buttonState,  void (*butt
             if( buttonState_Pressed == buttonState )
             {
                 buttonFunction();
-                mcHal_PressButtonState_mds.debounceCounter = 0;
+                mcHal_PressButtonState_mds.debounceCounter = 0u;
                 mcHal_PressButtonState_mds.state = buttonStateMachine_Wait;
             }
         }
@@ -231,7 +231,7 @@ void mcHal_ButtonResponse( const tmcHal_ButtonState_e  buttonState,  void (*butt
             if( SW_DEBOUNCE_DLY_500MS <= mcHal_PressButtonState_mds.debounceCounter)
             {
                 mcHal_PressButtonState_mds.state = buttonStateMachine_Ready;
-                mcHal_PressButtonState_mds.debounceCounter = 0;
+                mcHal_PressButtonState_mds.debounceCounter = 0u;
             }
             else
             {
@@ -243,6 +243,7 @@ void mcHal_ButtonResponse( const tmcHal_ButtonState_e  buttonState,  void (*butt
         {
               /* Should never come here */
         }
+        break;
     }
 }
 
@@ -293,21 +294,6 @@ void mcHalI_AdcInterruptClear( void )
 }
 
 
-/*! \brief ADC Enable
- * 
- * Details.
- * ADC Enable
- * 
- * @param[in]: 
- * @param[in/out]:
- * @param[out]:
- * @return:
- */
-void mcHalI_ADCEnable( void )
-{
-
-}
-
 /*! \brief ADC callback function
  * 
  * Details.
@@ -336,7 +322,7 @@ void mcHalI_AdcCallBackRegister(ADC_CALLBACK  callback, uintptr_t context)
  */
 void mcHalI_PwmTimerStart( void )
 {
-    PWM0_ChannelsStart(0x7); 
+    PWM0_ChannelsStart((PWM_CHANNEL_MASK)0x7u); 
 }
 
 /*! \brief Get analog signals from ADC peripheral
