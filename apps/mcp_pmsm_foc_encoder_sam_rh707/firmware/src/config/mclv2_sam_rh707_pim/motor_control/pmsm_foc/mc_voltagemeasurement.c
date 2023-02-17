@@ -66,7 +66,7 @@
 /******************************************************************************/
 /*                   Global Variables                                         */
 /******************************************************************************/
-tMCVOL_PARAMETERS_S    gMCVOL_Parameters = { VOLTAGE_ADC_TO_PHY_RATIO };
+static tMCVOL_PARAMETERS_S    gMCVOL_Parameters = { VOLTAGE_ADC_TO_PHY_RATIO };
 tMCVOL_OUTPUT_SIGNAL_S gMCVOL_OutputSignals = {0.0f, 0.0f };
 
 
@@ -104,7 +104,7 @@ void MCVOL_InitializeVoltageMeasurement( void )
 void MCVOL_VoltageMeasurement( void )
 {
     /* Read DC bus voltage */
-    gMCVOL_OutputSignals.rawValue =   MCHAL_ADCVdcResultGet(MCHAL_ADC_VDC) >> MCHAL_ADC_RESULT_SHIFT;
+    gMCVOL_OutputSignals.rawValue =   (float)((uint32_t)((uint32_t)MCHAL_ADCVdcResultGet(MCHAL_ADC_VDC) >> MCHAL_ADC_RESULT_SHIFT));
     gMCVOL_OutputSignals.udc      =   gMCVOL_Parameters.dig2PhyConversion * gMCVOL_OutputSignals.rawValue;
     gMCVOL_OutputSignals.umax     =   gMCVOL_OutputSignals.udc/SQRT3;
 }

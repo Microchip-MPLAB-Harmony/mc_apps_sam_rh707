@@ -91,7 +91,7 @@ __STATIC_INLINE void MCCTRL_FieldWeakening(const tMCCTRL_FW_INPUT_SIGNALS_S  * c
 static void MCCTRL_ResetFieldWeakening( void );
 #endif
 
-
+static uintptr_t dummyforMisra;
 /******************************************************************************/
 /*                   Global Variables                                         */
 /******************************************************************************/
@@ -113,7 +113,7 @@ tMCCTRL_OPEN_LOOP_PARAM_S               gMCCTRL_OpenLoopParam = {
                                                                 };
 #endif
 
-tMCCTRL_TASK_PARAM_S gMCCTRL_TaskParameters = {
+static tMCCTRL_TASK_PARAM_S gMCCTRL_TaskParameters = {
                                                   SPEED_LOOP_PWM_COUNT,
                                                   POSITION_LOOP_PWM_COUNT
                                               };
@@ -128,8 +128,8 @@ tMCLIB_PICONTROLLER_S gMCLIB_IqPIController =
     .kc = Q_CURRCNTR_CTERM,
     .outMax = Q_CURRCNTR_OUTMAX,
     .outMin = -Q_CURRCNTR_OUTMAX,
-    .dSum = 0,
-    .out = 0
+    .dSum = 0.0f,
+    .out = 0.0f
 };
 /* Id PI controller */
 tMCLIB_PICONTROLLER_S gMCLIB_IdPIController =
@@ -139,8 +139,8 @@ tMCLIB_PICONTROLLER_S gMCLIB_IdPIController =
     .kc = D_CURRCNTR_CTERM,
     .outMax = D_CURRCNTR_OUTMAX,
     .outMin = -D_CURRCNTR_OUTMAX,
-    .dSum = 0,
-    .out = 0
+    .dSum = 0.0f,
+    .out = 0.0f
 };
 /* Speed PI controller */
 tMCLIB_PICONTROLLER_S gMCLIB_SpeedPIController =
@@ -150,8 +150,8 @@ tMCLIB_PICONTROLLER_S gMCLIB_SpeedPIController =
     .kc = SPEEDCNTR_CTERM,
     .outMax = SPEEDCNTR_OUTMAX,
     .outMin = -SPEEDCNTR_OUTMAX,
-    .dSum = 0,
-    .out = 0
+    .dSum = 0.0f,
+    .out = 0.0f
 };
 
 /*****************************************************************************/
@@ -373,7 +373,7 @@ __STATIC_INLINE float MCCTRL_IqrefCalculation( void )
 
     /* Execute the velocity control loop */
     gMCLIB_SpeedPIController.inMeas = gMCRPOS_OutputSignals.speed;
-    gMCLIB_SpeedPIController.inRef  = ( gMCCTRL_CtrlParam.rotationSign * gMCSPE_OutputSignals.commandSpeed );
+    gMCLIB_SpeedPIController.inRef  = ( (float)gMCCTRL_CtrlParam.rotationSign * gMCSPE_OutputSignals.commandSpeed );
     MCLIB_PIControl(&gMCLIB_SpeedPIController);
     iqRef = gMCLIB_SpeedPIController.out;
 
@@ -426,7 +426,7 @@ __STATIC_INLINE float MCCTRL_IdrefCalculation( void )
     idRef = idRef + KFILTER_POT * ( gMCCTRL_FieldWeakeningOutput.idref -  idRef);
 
 #else
-    idRef = 0;
+    idRef = 0.0f;
 #endif
 
     return idRef;
@@ -440,7 +440,7 @@ __STATIC_INLINE float MCCTRL_IdrefCalculation( void )
 /******************************************************************************/
 __STATIC_INLINE void MCCTRL_PotentiometerRead (void)
 {
-    gMCCTRL_CtrlParam.iqPotInput = (float)(MCHAL_ADCPotResultGet(MCHAL_ADC_POT) >> MCHAL_ADC_RESULT_SHIFT);
+    gMCCTRL_CtrlParam.iqPotInput = (float)((uint16_t)(MCHAL_ADCPotResultGet(MCHAL_ADC_POT) >> MCHAL_ADC_RESULT_SHIFT));
 }
 
 /******************************************************************************/
@@ -456,7 +456,7 @@ __STATIC_INLINE void MCCTRL_StateMachine( void )
         case MCAPP_IDLE:
         {
             /* Do not do anything */
-            gMCRPOS_RotorAlignOutput.iqRef = 0;
+            gMCRPOS_RotorAlignOutput.iqRef = 0.0f;
 
         }
         break;
@@ -474,9 +474,9 @@ __STATIC_INLINE void MCCTRL_StateMachine( void )
                 gMCCTRL_CtrlParam.mcState = MCAPP_CLOSED_LOOP;
                 #endif
             }
-            gMCCTRL_CtrlParam.iqRef =  gMCCTRL_CtrlParam.rotationSign * gMCRPOS_RotorAlignOutput.iqRef;
+            gMCCTRL_CtrlParam.iqRef =  (float)gMCCTRL_CtrlParam.rotationSign * gMCRPOS_RotorAlignOutput.iqRef;
             gMCCTRL_CtrlParam.idRef =  gMCRPOS_RotorAlignOutput.idRef;
-            gMCLIB_Position.angle =  gMCCTRL_CtrlParam.rotationSign *  gMCRPOS_RotorAlignOutput.angle;
+            gMCLIB_Position.angle =  (float)gMCCTRL_CtrlParam.rotationSign *  gMCRPOS_RotorAlignOutput.angle;
         }
         break;
 
@@ -508,7 +508,7 @@ __STATIC_INLINE void MCCTRL_StateMachine( void )
                 }
             }
             /* the angle set depends on startup ramp */
-            gMCLIB_Position.angle += ( gMCCTRL_CtrlParam.rotationSign * gMCCTRL_CtrlParam.velRef  * FAST_LOOP_TIME_SEC );
+            gMCLIB_Position.angle += ( (float)gMCCTRL_CtrlParam.rotationSign * gMCCTRL_CtrlParam.velRef  * FAST_LOOP_TIME_SEC );
             MCLIB_WrapAngle( &gMCLIB_Position.angle);
         }
         break;
@@ -530,6 +530,7 @@ __STATIC_INLINE void MCCTRL_StateMachine( void )
         {
             /* Undefined state: Should never come here */
         }
+        break;
     }
 
 }
@@ -600,13 +601,13 @@ __STATIC_INLINE void  MCCTRL_LoopSynchronization(void)
     positionLoopCounter++;
     if( gMCCTRL_TaskParameters.speedLoopCount <= speedLoopCounter)
     {
-        speedLoopCounter = 0;
+        speedLoopCounter = 0U;
         gMCCTRL_TaskStateSignals.speedLoopActive = MCCTRL_LOOP_ACTIVE;
     }
 
     if( gMCCTRL_TaskParameters.positionLoopCount <= positionLoopCounter )
     {
-        positionLoopCounter = 0;
+        positionLoopCounter = 0U;
         gMCCTRL_TaskStateSignals.positionLoopActive = MCCTRL_LOOP_ACTIVE;
     }
 }
@@ -633,9 +634,9 @@ __STATIC_INLINE void  MCCTRL_LoopSynchronization(void)
     MCCTRL_InitializeFieldWeakening();
 #endif
 
-    gMCPWM_SVPWM.period = MCHAL_PWMPrimaryPeriodGet(MCHAL_PWM_PH_U);
-    gMCPWM_SVPWM.neutralPWM = (uint32_t)(0.5f * gMCPWM_SVPWM.period );
-    gMCPWM_SVPWM.enableSVPWM = 1;
+    gMCPWM_SVPWM.period = (float)((uint32_t)MCHAL_PWMPrimaryPeriodGet(MCHAL_PWM_PH_U));
+    gMCPWM_SVPWM.neutralPWM = (uint32_t)((float)(0.5f * gMCPWM_SVPWM.period ));
+    gMCPWM_SVPWM.enableSVPWM = true;
 }
 
 
@@ -648,7 +649,7 @@ void MCCTRL_CurrentOffsetCalibration( uint32_t status, uintptr_t context )
     }
     else
     {
-        MCHAL_ADCCallbackRegister( MCHAL_ADC_PH_U, MCCTRL_CurrentLoopTasks, (uintptr_t)NULL );
+        MCHAL_ADCCallbackRegister( MCHAL_ADC_PH_U, MCCTRL_CurrentLoopTasks, (uintptr_t)dummyforMisra );
     }
 }
 
@@ -667,8 +668,7 @@ void MCCTRL_CurrentLoopTasks( uint32_t status, uintptr_t context )
     /* Clarke, Park transform */
     MCCTRL_SignalTransformation();
 
-    /* Rotor position estimation */
-    MCRPOS_PositionMeasurement( );
+
 
     /* Motor control */
     MCCTRL_MotorControl( );
@@ -701,14 +701,14 @@ void MCCTRL_CurrentLoopTasks( uint32_t status, uintptr_t context )
     MCLIB_ResetPIParameters(&gMCLIB_IqPIController);
     MCLIB_ResetPIParameters(&gMCLIB_IdPIController);
     MCLIB_ResetPIParameters(&gMCLIB_SpeedPIController);
-    gMCCTRL_CtrlParam.idRef = 0;
-    gMCCTRL_CtrlParam.iqRef = 0;
-    gMCRPOS_OutputSignals.speed = 0;
-    gMCRPOS_OutputSignals.angle = 0;
+    gMCCTRL_CtrlParam.idRef = 0.0f;
+    gMCCTRL_CtrlParam.iqRef = 0.0f;
+    gMCRPOS_OutputSignals.speed = 0.0f;
+    gMCRPOS_OutputSignals.angle = 0.0f;
 #if (CONTROL_LOOP == SPEED_LOOP)    
-    gMCSPE_OutputSignals.commandSpeed = 0;
+    gMCSPE_OutputSignals.commandSpeed = 0.0f;
 #endif    
-    gMCCTRL_CtrlParam.velRef = 0;
+    gMCCTRL_CtrlParam.velRef = 0.0f;
 
 
 #if (POSITION_FEEDBACK == SENSORLESS_PLL || (POSITION_FEEDBACK == SENSORED_ENCODER && CONTROL_LOOP == OPEN_LOOP))
@@ -719,8 +719,8 @@ void MCCTRL_CurrentLoopTasks( uint32_t status, uintptr_t context )
     MCCTRL_ResetFieldWeakening();
 #endif
 
-    gMCPWM_SVPWM.period = MCHAL_PWMPrimaryPeriodGet(MCHAL_PWM_PH_U);
-    gMCPWM_SVPWM.neutralPWM = (uint32_t)(0.5f * gMCPWM_SVPWM.period );
+    gMCPWM_SVPWM.period = (float)((uint32_t)MCHAL_PWMPrimaryPeriodGet(MCHAL_PWM_PH_U));
+    gMCPWM_SVPWM.neutralPWM = (uint32_t)((float)(0.5f * gMCPWM_SVPWM.period ));
 }
 
 

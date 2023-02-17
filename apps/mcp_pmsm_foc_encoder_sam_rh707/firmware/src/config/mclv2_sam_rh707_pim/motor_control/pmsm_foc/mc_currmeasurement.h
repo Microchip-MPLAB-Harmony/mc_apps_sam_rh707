@@ -70,8 +70,8 @@ extern "C" {
 
 
 /* Motor phase current offset calibration limits. */
-#define CURRENT_OFFSET_MAX                (2304) /* current offset max limit in terms of ADC count */
-#define CURRENT_OFFSET_MIN                (1792) /* current offset min limit in terms of ADC count */
+#define CURRENT_OFFSET_MAX                (2304.0f) /* current offset max limit in terms of ADC count */
+#define CURRENT_OFFSET_MIN                (1792.0f) /* current offset min limit in terms of ADC count */
 #define CURRENTS_OFFSET_SAMPLES           (128U) /* Phase Current Offset calibration samples       */
 
 

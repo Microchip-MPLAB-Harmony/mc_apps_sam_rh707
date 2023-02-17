@@ -69,7 +69,7 @@
 /******************************************************************************/
 
 tMCCUR_INPUT_SIGNAL_S   gMCCUR_InputSignals;
-tMCCUR_PARAMETERS_S     gMCCUR_Parameters = {CURRENT_OFFSET_MIN, CURRENT_OFFSET_MAX};
+static tMCCUR_PARAMETERS_S     gMCCUR_Parameters = {CURRENT_OFFSET_MIN, CURRENT_OFFSET_MAX};
 tMCCUR_STATE_SIGNAL_S   gMCCUR_StateSignals;
 tMCCUR_OUTPUT_SIGNAL_S  gMCCUR_OutputSignals;
 
@@ -109,15 +109,15 @@ void MCCUR_OffsetCalibration( void )
 
   if (gMCCUR_StateSignals.adcSampleCounter < CURRENTS_OFFSET_SAMPLES)
   {
-      gMCCUR_StateSignals.phaseUOffsetBuffer += (MCHAL_ADCPhaseUResultGet(MCHAL_ADC_PH_U) >> MCHAL_ADC_RESULT_SHIFT);
-      gMCCUR_StateSignals.phaseVOffsetBuffer += (MCHAL_ADCPhaseVResultGet(MCHAL_ADC_PH_V) >> MCHAL_ADC_RESULT_SHIFT);
+      gMCCUR_StateSignals.phaseUOffsetBuffer += ((uint32_t)MCHAL_ADCPhaseUResultGet(MCHAL_ADC_PH_U) >> MCHAL_ADC_RESULT_SHIFT);
+      gMCCUR_StateSignals.phaseVOffsetBuffer += ((uint32_t)MCHAL_ADCPhaseVResultGet(MCHAL_ADC_PH_V) >> MCHAL_ADC_RESULT_SHIFT);
       gMCCUR_StateSignals.adcSampleCounter++;
   }
   else
   {
 
-      phaseCurrentUOffset = (float)(gMCCUR_StateSignals.phaseUOffsetBuffer/CURRENTS_OFFSET_SAMPLES);
-      phaseCurrentVOffset = (float)(gMCCUR_StateSignals.phaseVOffsetBuffer/CURRENTS_OFFSET_SAMPLES);
+      phaseCurrentUOffset = (float)((float)gMCCUR_StateSignals.phaseUOffsetBuffer/(float)CURRENTS_OFFSET_SAMPLES);
+      phaseCurrentVOffset = (float)((float)gMCCUR_StateSignals.phaseVOffsetBuffer/(float)CURRENTS_OFFSET_SAMPLES);
 
       /* Limit motor phase current offset calibration to configured Min/Max levels. */
       MCLIB_ImposeLimits(&phaseCurrentUOffset, gMCCUR_Parameters.minOffset, gMCCUR_Parameters.maxOffset );
@@ -146,8 +146,8 @@ void MCCUR_CurrentMeasurement( void )
   #if( DUAL_SHUNT == CURRENT_MEASUREMENT )
 
     /* Get motor currents  */
-    iu = MCHAL_ADCPhaseUResultGet(MCHAL_ADC_PH_U) >> MCHAL_ADC_RESULT_SHIFT;
-    iv = MCHAL_ADCPhaseVResultGet(MCHAL_ADC_PH_V) >> MCHAL_ADC_RESULT_SHIFT;
+    iu = (float)((uint32_t)((uint32_t)MCHAL_ADCPhaseUResultGet(MCHAL_ADC_PH_U) >> MCHAL_ADC_RESULT_SHIFT));
+    iv = (float)((uint32_t)((uint32_t)MCHAL_ADCPhaseVResultGet(MCHAL_ADC_PH_V) >> MCHAL_ADC_RESULT_SHIFT));
 
     /* Current sensor offset correction */
     gMCCUR_OutputSignals.phaseCurrents.iu = ADC_CURRENT_SCALE * ( gMCCUR_OutputSignals.iuOffset - iu );

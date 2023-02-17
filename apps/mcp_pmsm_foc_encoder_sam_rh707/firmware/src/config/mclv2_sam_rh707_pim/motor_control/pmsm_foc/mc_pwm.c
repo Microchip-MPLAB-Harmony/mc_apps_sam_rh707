@@ -76,11 +76,11 @@ tMCPWM_SVPWM_S    gMCPWM_SVPWM = {0.0f};
 /******************************************************************************/
 /*                          LOCAL FUNCTIONS                                   */
 /******************************************************************************/
-__STATIC_INLINE void MCPWM_SVPWMTimeCalc(tMCPWM_SVPWM_S * const svm)
+__STATIC_INLINE void MCPWM_SVPWMTimeCalc(tMCPWM_SVPWM_S * svm)
 {
     svm->t1 = (svm->period) * svm->t1;
     svm->t2 = (svm->period) * svm->t2;
-    svm->tc = (svm->period - svm->t1 - svm->t2)/2;
+    svm->tc = (svm->period - svm->t1 - svm->t2)/2.0f;
     svm->tb = svm->tc + svm->t2;
     svm->ta = svm->tb + svm->t1;
 }
@@ -99,13 +99,13 @@ __STATIC_INLINE void MCPWM_SVPWMTimeCalc(tMCPWM_SVPWM_S * const svm)
 void MCPWM_SVPWMGen( const tMCLIB_CLARK_TRANSFORM_S * const vAlphaBeta, tMCPWM_SVPWM_S * const svm )
 {
     svm->vr1 = vAlphaBeta->betaAxis;
-    svm->vr2 = (-vAlphaBeta->betaAxis/2 + SQRT3_BY2 * vAlphaBeta->alphaAxis);
-    svm->vr3 = (-vAlphaBeta->betaAxis/2 - SQRT3_BY2 * vAlphaBeta->alphaAxis);
+    svm->vr2 = (-vAlphaBeta->betaAxis/2.0f + SQRT3_BY2 * vAlphaBeta->alphaAxis);
+    svm->vr3 = (-vAlphaBeta->betaAxis/2.0f - SQRT3_BY2 * vAlphaBeta->alphaAxis);
 
-      if( svm->vr1 >= 0 )
+      if( svm->vr1 >= 0.0f )
       {
             // (xx1)
-            if( svm->vr2 >= 0 )
+            if( svm->vr2 >= 0.0f )
             {
                   // (x11)
                   // Must be Sector 3 since Sector 7 not allowed
@@ -120,7 +120,7 @@ void MCPWM_SVPWMGen( const tMCLIB_CLARK_TRANSFORM_S * const vAlphaBeta, tMCPWM_S
             else
             {
                   // (x01)
-                  if( svm->vr3 >= 0 )
+                  if( svm->vr3 >= 0.0f )
                   {
                         // Sector 5: (1,0,1)  120-180 degrees
                         svm->t1 = svm->vr1;
@@ -145,10 +145,10 @@ void MCPWM_SVPWMGen( const tMCLIB_CLARK_TRANSFORM_S * const vAlphaBeta, tMCPWM_S
       else
       {
             // (xx0)
-            if( svm->vr2 >= 0 )
+            if( svm->vr2 >= 0.0f )
             {
                   // (x10)
-                  if( svm->vr3 >= 0 )
+                  if( svm->vr3 >= 0.0f )
                   {
                         // Sector 6: (1,1,0)  240-300 degrees
                         svm->t1 = svm->vr3;
@@ -244,7 +244,7 @@ void MCPWM_PWMOutputEnable(void)
 /*****************************************************************************/
 void MCPWM_PWMDutyUpdate(tMCPWM_SVPWM_S * const svm)
 {
-    MCHAL_PWMDutySet(MCHAL_PWM_PH_U, svm->period - svm->dPwm1);
-    MCHAL_PWMDutySet(MCHAL_PWM_PH_V, svm->period - svm->dPwm2);
-    MCHAL_PWMDutySet(MCHAL_PWM_PH_W, svm->period - svm->dPwm3);
+    MCHAL_PWMDutySet(MCHAL_PWM_PH_U, (uint16_t)((float)(svm->period - (float)svm->dPwm1)));
+    MCHAL_PWMDutySet(MCHAL_PWM_PH_V, (uint16_t)((float)(svm->period - (float)svm->dPwm2)));
+    MCHAL_PWMDutySet(MCHAL_PWM_PH_W, (uint16_t)((float)(svm->period - (float)svm->dPwm3)));
 }

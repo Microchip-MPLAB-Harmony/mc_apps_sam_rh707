@@ -69,11 +69,11 @@ __STATIC_INLINE void MCRPOS_EncoderCalculations( void );
 /******************************************************************************/
 /*                   Global Variables                                         */
 /******************************************************************************/
-tMCRPOS_STATE_SIGNAL_S            gMCRPOS_StateSignals = { 0.0f };
+tMCRPOS_STATE_SIGNAL_S            gMCRPOS_StateSignals = { 0U };
 tMCRPOS_OUTPUT_SIGNAL_S           gMCRPOS_OutputSignals = { 0.0f };
-tMCRPOS_ROTOR_ALIGN_STATE_S       gMCRPOS_RotorAlignState = { MCRPOS_FORCE_ALIGN, 0U,  0U };
-tMCRPOS_ROTOR_ALIGN_OUTPUT_S      gMCRPOS_RotorAlignOutput = {0U,  0U };
-tMCRPOS_ROTOR_ALIGN_PARAM_S       gMCRPOS_RotorAlignParam  = {
+static tMCRPOS_ROTOR_ALIGN_STATE_S       gMCRPOS_RotorAlignState = { MCRPOS_FORCE_ALIGN, 0U,  0U };
+tMCRPOS_ROTOR_ALIGN_OUTPUT_S      gMCRPOS_RotorAlignOutput = {0.0f,  0.0f };
+static tMCRPOS_ROTOR_ALIGN_PARAM_S       gMCRPOS_RotorAlignParam  = {
                                                                   Q_CURRENT_REF_OPENLOOP,
                                                                   LOCK_COUNT_FOR_LOCK_TIME
                                                              };
@@ -91,6 +91,7 @@ tMCRPOS_ROTOR_ALIGN_PARAM_S       gMCRPOS_RotorAlignParam  = {
 /******************************************************************************/
 __STATIC_INLINE void MCRPOS_InitializeEncoder( void )
 {
+    /* Encoder Init*/
 }
 
 __STATIC_INLINE void MCRPOS_EncoderCalculations( void )
@@ -110,6 +111,7 @@ __STATIC_INLINE void MCRPOS_EncoderCalculations( void )
     }
     else
     {
+        /* Dummy branch for MISRAC compliance*/
     }
 
     gMCRPOS_StateSignals.positionCompensation = gMCRPOS_StateSignals.positionCompensation % ENCODER_PULSES_PER_EREV;
@@ -119,24 +121,24 @@ __STATIC_INLINE void MCRPOS_EncoderCalculations( void )
     /* Calculate velocity */
     if( gMCRPOS_StateSignals.synCounter > QEI_VELOCITY_COUNT_PRESCALER )
     {
-        gMCRPOS_StateSignals.synCounter = 0;
+        gMCRPOS_StateSignals.synCounter = 0u;
         gMCRPOS_StateSignals.positionForSpeed = (int16_t)MCHAL_EncoderPositionGet();
         gMCRPOS_StateSignals.velocity = (gMCRPOS_StateSignals.positionForSpeed - gMCRPOS_StateSignals.positionLastForSpeed);
         gMCRPOS_StateSignals.positionLastForSpeed = (int16_t)gMCRPOS_StateSignals.positionForSpeed;
     }
 
     /* Write speed and position output */
-    gMCRPOS_OutputSignals.speed = (float)( gMCRPOS_StateSignals.velocity * QEI_VELOCITY_COUNT_TO_RAD_PER_SEC );
+    gMCRPOS_OutputSignals.speed = (float)((float)gMCRPOS_StateSignals.velocity * QEI_VELOCITY_COUNT_TO_RAD_PER_SEC );
     gMCRPOS_OutputSignals.mechSpeedRPM = (float)(gMCRPOS_OutputSignals.speed * ELE_TO_MECH_RPM_SPEED);    
-    angle = gMCRPOS_StateSignals.positionCount * (float)QEI_COUNT_TO_ELECTRICAL_ANGLE;
+    angle = (float)gMCRPOS_StateSignals.positionCount * (float)QEI_COUNT_TO_ELECTRICAL_ANGLE;
     /* Limit rotor angle range to 0 to 2*M_PI for lookup table */
-    if(angle > (2*M_PI))
+    if(angle > (2.0f*(float)M_PI))
     {
-        gMCRPOS_OutputSignals.angle = angle - (2*M_PI);
+        gMCRPOS_OutputSignals.angle = angle - (2.0f*(float)M_PI);
     }
-    else if(angle < 0)
+    else if(angle < 0.0f)
     {
-        gMCRPOS_OutputSignals.angle = 2*M_PI + angle;
+        gMCRPOS_OutputSignals.angle = 2.0f*(float)M_PI + angle;
     }
     else
     {
@@ -174,8 +176,9 @@ tMCAPP_STATUS_E MCRPOS_InitialRotorPositonDetection( tMCRPOS_ROTOR_ALIGN_OUTPUT_
         {
             /* Should never come here */
         }
+        break;
     }
-    gMCRPOS_RotorAlignState.status = gMCRPOS_RotorAlignState.rotorAlignState;
+    gMCRPOS_RotorAlignState.status = (uint8_t )gMCRPOS_RotorAlignState.rotorAlignState;
     return status;
 }
 
@@ -184,17 +187,17 @@ tMCAPP_STATUS_E MCRPOS_FieldAlignment( tMCRPOS_ROTOR_ALIGN_OUTPUT_S * const alig
     tMCAPP_STATUS_E status = MCAPP_IN_PROGRESS ;
 
   #if( ALIGNMENT_METHOD == Q_AXIS || ALIGNMENT_METHOD == D_AXIS)
-    if ( gMCRPOS_RotorAlignState.startupLockCount < ( 0.5* gMCRPOS_RotorAlignParam.lockTimeCount))
+    if ( gMCRPOS_RotorAlignState.startupLockCount < ( gMCRPOS_RotorAlignParam.lockTimeCount/2U))
     {
       #if(ALIGNMENT_METHOD == Q_AXIS )
         alignOutput->idRef =  0.0f;
         alignOutput->iqRef =  gMCRPOS_RotorAlignParam.lockCurrent;
-        alignOutput->angle = (M_PI);
+        alignOutput->angle = (float)(M_PI);
         gMCRPOS_RotorAlignState.startupLockCount++;
       #else
         alignOutput->idRef =  gMCRPOS_RotorAlignParam.lockCurrent;
         alignOutput->iqRef =  0.0f;
-        alignOutput->angle =  (0.5f * M_PI_2);
+        alignOutput->angle =  (0.5f * (float)M_PI_2);
         gMCRPOS_RotorAlignState.startupLockCount++;
       #endif
     }
@@ -203,7 +206,7 @@ tMCAPP_STATUS_E MCRPOS_FieldAlignment( tMCRPOS_ROTOR_ALIGN_OUTPUT_S * const alig
       #if(ALIGNMENT_METHOD == Q_AXIS )
         alignOutput->idRef =  0.0f;
         alignOutput->iqRef =  gMCRPOS_RotorAlignParam.lockCurrent;
-        alignOutput->angle = (3*M_PI_2);
+        alignOutput->angle = (3.0f*(float)M_PI_2);
         gMCRPOS_RotorAlignState.startupLockCount++;
       #else
         alignOutput->idRef =  gMCRPOS_RotorAlignParam.lockCurrent;
@@ -214,7 +217,7 @@ tMCAPP_STATUS_E MCRPOS_FieldAlignment( tMCRPOS_ROTOR_ALIGN_OUTPUT_S * const alig
     }
     else
     {
-        gMCRPOS_RotorAlignState.startupLockCount = 0;
+        gMCRPOS_RotorAlignState.startupLockCount = 0u;
         MCHAL_EncoderPositionSet(1);
         MCHAL_EncoderStart();
         status = MCAPP_SUCCESS;
@@ -235,7 +238,7 @@ tMCAPP_STATUS_E MCRPOS_FieldAlignment( tMCRPOS_ROTOR_ALIGN_OUTPUT_S * const alig
 /******************************************************************************/
 void MCRPOS_InitializeRotorPositionSensing( void )
 {
-    MCRPOS_InitializeEncoder();
+   // MCRPOS_InitializeEncoder();
 }
 
 /******************************************************************************/
@@ -245,7 +248,7 @@ void MCRPOS_InitializeRotorPositionSensing( void )
 /* Description:                                                               */
 /* Determines the rotor position                                              */
 /******************************************************************************/
-void MCRPOS_PositionMeasurement(  )
+void MCRPOS_PositionMeasurement(void)
 {
     MCRPOS_EncoderCalculations( );
 }
@@ -260,8 +263,8 @@ void MCRPOS_PositionMeasurement(  )
 void MCRPOS_ResetPositionSensing( tMCRPOS_ALIGN_STATE_E state )
 {
     gMCRPOS_RotorAlignState.rotorAlignState = state;
-    gMCRPOS_StateSignals.position = 0;
+    gMCRPOS_StateSignals.position = 0u;
     gMCRPOS_StateSignals.velocity = 0;
-    gMCRPOS_StateSignals.synCounter = 0;
-    gMCRPOS_RotorAlignState.startupLockCount = 0;
+    gMCRPOS_StateSignals.synCounter = 0u;
+    gMCRPOS_RotorAlignState.startupLockCount = 0u;
 }

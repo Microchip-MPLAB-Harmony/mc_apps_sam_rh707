@@ -108,7 +108,6 @@ typedef struct
     uint16_t                        positionCount;
     uint16_t                        positionCompensation;
 
-
 }tMCRPOS_STATE_SIGNAL_S;
 
 typedef struct

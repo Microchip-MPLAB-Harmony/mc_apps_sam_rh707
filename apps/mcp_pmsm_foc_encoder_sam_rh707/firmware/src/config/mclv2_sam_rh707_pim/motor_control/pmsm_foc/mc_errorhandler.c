@@ -67,7 +67,7 @@
 /*                   Global Variables                                         */
 /******************************************************************************/
 tMCERR_STATE_SIGNAL_S    gMCERR_StateSignals;
-MCERR_CALLBACK_OBJECT    MCERR_CallbackObj;
+static MCERR_CALLBACK_OBJECT    MCERR_CallbackObj;
 
 /******************************************************************************/
 /*  Function name: MCERR_FaultCallbackRegister                                */
@@ -105,7 +105,7 @@ void MCERR_FaultControlISR(uint32_t status, uintptr_t context)
 {
    /* Indicate the failure status by glowing LED D2 */
     MCHAL_FAULT_LED_SET();
-    gMCERR_StateSignals.errorCode |= (1 << MCERR_OVERCURRENT);
+    gMCERR_StateSignals.errorCode |= ((uint32_t)1U << (uint8_t)MCERR_OVERCURRENT);
     PMSM_FOC_MotorStop();
 
     if (MCERR_CallbackObj.callback_fn != NULL)

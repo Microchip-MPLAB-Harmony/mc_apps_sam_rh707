@@ -85,7 +85,7 @@ extern "C" {
 #define MCHAL_PWM_PH_U                  PWM_CHANNEL_0
 #define MCHAL_PWM_PH_V                  PWM_CHANNEL_1
 #define MCHAL_PWM_PH_W                  PWM_CHANNEL_2
-#define MCHAL_PWM_PH_MASK               0x7
+#define MCHAL_PWM_PH_MASK               0x7U
 #define MCHAL_PWMStop(mask)                 PWM0_ChannelsStop(mask)
 #define MCHAL_PWMStart(mask)                PWM0_ChannelsStart(mask)
 #define MCHAL_PWMPrimaryPeriodGet(ch)       PWM0_ChannelPeriodGet(ch)

@@ -39,8 +39,8 @@
 *******************************************************************************/
 // DOM-IGNORE-END
 
-#ifndef _USER_HEADER
-#define _USER_HEADER
+#ifndef USER_HEADER
+#define USER_HEADER
 
 #include "mc_pmsm_foc_common.h"
 /***********************************************************************************************/
@@ -58,7 +58,6 @@
 #define POSITION_FEEDBACK                (SENSORED_ENCODER)
 
 #define CONTROL_LOOP                     (SPEED_LOOP)
-
 #define FIELD_WEAKENING                  (DISABLED)  /* If enabled - Field weakening */
 #define ALIGNMENT_METHOD                 (Q_AXIS)  /* alignment method  */
 
@@ -92,7 +91,7 @@
 #define OPEN_LOOP_END_SPEED_RPM         (500) /* Startup - Control loop switches to close loop at this speed */
 #define OPEN_LOOP_RAMP_TIME_IN_SEC      (5)   /* Startup - Time to reach OPEN_LOOP_END_SPEED_RPM in seconds */
 
-#define Q_CURRENT_REF_OPENLOOP          (0.4) /* Startup - Motor start to ramp up in current control mode */
+#define Q_CURRENT_REF_OPENLOOP          (0.4f) /* Startup - Motor start to ramp up in current control mode */
 
 
 /* Current ramp parameters for open loop to close loop transition  */
@@ -121,7 +120,7 @@
 
 /******* Velocity Control Loop Coefficients **********************************/
 #define     SPEEDCNTR_PTERM            (float)(0.01)
-#define     SPEEDCNTR_ITERM            (float)(0.00002 * 0.01f)
+#define     SPEEDCNTR_ITERM            (float)(0.00002f * 0.01f)
 #define     SPEEDCNTR_CTERM            (float)(0.5)
 #define     SPEEDCNTR_OUTMAX           (float)(4)
 

@@ -110,6 +110,6 @@ void MCLIB_PIControl( tMCLIB_PICONTROLLER_S * const pParm)
 void MCLIB_ResetPIParameters(tMCLIB_PICONTROLLER_S * const pParm)
 {
     /**************** PI D Term ***********************************************/
-    pParm->dSum = 0;
-    pParm->out = 0;
+    pParm->dSum = 0.0f;
+    pParm->out = 0.0f;
 }

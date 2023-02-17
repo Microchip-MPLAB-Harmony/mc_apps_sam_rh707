@@ -66,7 +66,7 @@ tMCSPE_STATE_SIGNAL_S   gMCSPE_StateSignals;
 tMCSPE_PARAMETERS_S     gMCSPE_Parameters = {
                                               KFILTER_POT,
                                               POT_ADC_COUNT_FW_SPEED_RATIO,
-                                              0
+                                              0.0f
                                             };
 tMCSPE_OUTPUT_SIGNAL_S   gMCSPE_OutputSignals;
 
@@ -91,7 +91,7 @@ void  MCSPE_InitializeSpeedControl(void)
 {
     /* Initialize speed command function parameters */
     gMCSPE_Parameters.filterParam    =   KFILTER_POT;
-    gMCSPE_Parameters.minSpeed       =   0;
+    gMCSPE_Parameters.minSpeed       =   0.0f;
     gMCSPE_Parameters.pot2SpeedRatio =   POT_ADC_COUNT_FW_SPEED_RATIO;
 
     /* Initialize speed command function states */
@@ -119,7 +119,7 @@ void MCSPE_SpeedCommand( void )
 
 void MCSPE_PotentiometerRead( void )
 {
-    gMCSPE_OutputSignals.potReading = (float)(MCHAL_ADCPotResultGet(MCHAL_ADC_POT) >> MCHAL_ADC_RESULT_SHIFT);
+    gMCSPE_OutputSignals.potReading = (float)((uint32_t)((uint32_t)MCHAL_ADCPotResultGet(MCHAL_ADC_POT) >> MCHAL_ADC_RESULT_SHIFT));
 }
 
 

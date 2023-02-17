@@ -73,13 +73,13 @@ static tMCCTRL_TASK_STATE_E PMSM_FOC_IsSpeedLoopActive( void );
 static tMCCTRL_TASK_STATE_E PMSM_FOC_IsPositionLoopActive( void );
 void MCINF_PositionLoopTasks( void );
 static void PMSM_FOC_StartAdcInterrupt( void );
-
+static uintptr_t dummyforMisra;
 /******************************************************************************/
 /*                   Global Variables                                         */
 /******************************************************************************/
 
-tPMSM_FOC_BUTTON_STATE_S                  gMCLIB_StartStopState;
-tPMSM_FOC_BUTTON_STATE_S                  gMCLIB_DirectionToggleState;
+static tPMSM_FOC_BUTTON_STATE_S                  gMCLIB_StartStopState;
+//static tPMSM_FOC_BUTTON_STATE_S                  gMCLIB_DirectionToggleState;
 
 
 /******************************************************************************/
@@ -92,16 +92,16 @@ static void PMSM_FOC_StartAdcInterrupt( void )
     MCHAL_IntClear(MCHAL_CTRL_IRQ);
 
     /* Enable ADC interrupt for field oriented control */
-    MCHAL_ADCCallbackRegister( MCHAL_ADC_PH_U, MCCTRL_CurrentOffsetCalibration, (uintptr_t)NULL );
+    MCHAL_ADCCallbackRegister( MCHAL_ADC_PH_U, MCCTRL_CurrentOffsetCalibration, (uintptr_t)dummyforMisra );
     MCHAL_IntEnable(MCHAL_CTRL_IRQ);
     MCHAL_ADCEnable();
 
     /* Enable interrupt for fault detection */
-    MCHAL_PWMCallbackRegister(MCHAL_PWM_PH_U, MCERR_FaultControlISR, (uintptr_t)NULL);
+    MCHAL_PWMCallbackRegister(MCHAL_PWM_PH_U, MCERR_FaultControlISR, (uintptr_t)dummyforMisra);
     MCHAL_IntEnable(MCHAL_FAULT_IRQ);
 
     /* Enables PWM channels. */
-    MCHAL_PWMStart(MCHAL_PWM_PH_MASK);
+    MCHAL_PWMStart((PWM_CHANNEL_MASK)MCHAL_PWM_PH_MASK);
     /* Disable PWM output */
     MCPWM_PWMOutputDisable();
 }
@@ -143,7 +143,7 @@ static tMCCTRL_TASK_STATE_E  PMSM_FOC_IsPositionLoopActive(void)
 /******************************************************************************/
 void PMSM_FOC_Initialize( void )
 {
-    gMCCTRL_CtrlParam.rotationSign = 1U;
+    gMCCTRL_CtrlParam.rotationSign = 1;
     gMCCTRL_CtrlParam.firstStart = true;
     gMCCTRL_CtrlParam.mcState = MCAPP_IDLE;
     gMCCTRL_CtrlParam.mcStateLast = MCAPP_IDLE;
@@ -163,8 +163,6 @@ void PMSM_FOC_Initialize( void )
     /* Motor Controller parameter initialization */
     MCCTRL_InitializeMotorControl();
 
-    /* Rotor position algorithm state initialization */
-    MCRPOS_InitializeRotorPositionSensing();
 
     /* Start ADC Interrupt for current control */
     PMSM_FOC_StartAdcInterrupt();
@@ -258,7 +256,7 @@ void PMSM_FOC_DirectionToggle(void)
 /* Function return: None                                                      */
 /* Description: Motor start stop and direction switch polling                 */
 /******************************************************************************/
-void PMSM_FOC_Tasks()
+void PMSM_FOC_Tasks(void)
 {
     /* Speed Loop control tasks */
     if( MCCTRL_LOOP_ACTIVE == PMSM_FOC_IsSpeedLoopActive())
@@ -283,7 +281,7 @@ void PMSM_FOC_Tasks()
 /* Function return: None                                                      */
 /* Description: Speed loop Tasks                                              */
 /******************************************************************************/
-void PMSM_FOC_SpeedLoopTasks()
+void PMSM_FOC_SpeedLoopTasks(void)
 {
     if( MCCTRL_LOOP_ACTIVE == PMSM_FOC_IsSpeedLoopActive())
     {
@@ -308,7 +306,7 @@ void PMSM_FOC_SpeedLoopTasks()
 /* Function return: None                                                     */
 /* Description: Position loop tasks                                          */
 /*****************************************************************************/
-void MCINF_PositionLoopTasks()
+void MCINF_PositionLoopTasks(void)
 {
     if( MCCTRL_LOOP_ACTIVE == PMSM_FOC_IsPositionLoopActive())
     {
@@ -326,19 +324,19 @@ void MCINF_PositionLoopTasks()
 /* Function return: None                                                       */
 /* Description: Button Polling                                                 */
 /*******************************************************************************/
-void PMSM_FOC_ButtonPolling()
+static void PMSM_FOC_ButtonPolling(void)
 {
     /* Check whether S2 push button is pressed */
     if( MCAPP_IDLE == gMCCTRL_CtrlParam.mcState )
     {
-        PMSM_FOC_ButtonResponse((tPMSM_FOC_SWITCH_STATE_E)(!MCHAL_START_STOP_SWITCH_GET()), &PMSM_FOC_MotorStart);
+        PMSM_FOC_ButtonResponse((tPMSM_FOC_SWITCH_STATE_E)(!(bool)MCHAL_START_STOP_SWITCH_GET()), &PMSM_FOC_MotorStart);
 
-        PMSM_FOC_ButtonResponse((tPMSM_FOC_SWITCH_STATE_E)(!MCHAL_DIR_SWITCH_GET()), &PMSM_FOC_DirectionToggle);
+        PMSM_FOC_ButtonResponse((tPMSM_FOC_SWITCH_STATE_E)(!(bool)MCHAL_DIR_SWITCH_GET()), &PMSM_FOC_DirectionToggle);
 
     }
     else
     {
-        PMSM_FOC_ButtonResponse((tPMSM_FOC_SWITCH_STATE_E)(!MCHAL_START_STOP_SWITCH_GET()), &PMSM_FOC_MotorStop);
+        PMSM_FOC_ButtonResponse((tPMSM_FOC_SWITCH_STATE_E)(!(bool)MCHAL_START_STOP_SWITCH_GET()), &PMSM_FOC_MotorStop);
     }
  }
 
@@ -370,7 +368,7 @@ void PMSM_FOC_ButtonResponse( const tPMSM_FOC_SWITCH_STATE_E  buttonState,  void
             if( PMSM_FOC_SWITCH_PRESSED == buttonState )
             {
                 buttonFunction();
-                gMCLIB_StartStopState.debounceCounter = 0;
+                gMCLIB_StartStopState.debounceCounter = 0U;
                 gMCLIB_StartStopState.state = PMSM_FOC_BUTTON_WAIT;
             }
         }
@@ -381,7 +379,7 @@ void PMSM_FOC_ButtonResponse( const tPMSM_FOC_SWITCH_STATE_E  buttonState,  void
             if( SW_DEBOUNCE_DLY_500MS <= gMCLIB_StartStopState.debounceCounter)
             {
                 gMCLIB_StartStopState.state = PMSM_FOC_BUTTON_READY;
-                gMCLIB_StartStopState.debounceCounter = 0;
+                gMCLIB_StartStopState.debounceCounter = 0U;
             }
             else
             {
@@ -393,5 +391,6 @@ void PMSM_FOC_ButtonResponse( const tPMSM_FOC_SWITCH_STATE_E  buttonState,  void
         {
               /* Should never come here */
         }
+        break;
     }
 }
