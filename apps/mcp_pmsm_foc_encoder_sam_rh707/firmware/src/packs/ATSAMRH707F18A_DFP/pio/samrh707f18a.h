@@ -1,7 +1,7 @@
 /*
  * Peripheral I/O description for SAMRH707F18A
  *
- * Copyright (c) 2022 Microchip Technology Inc. and its subsidiaries.
+ * Copyright (c) 2023 Microchip Technology Inc. and its subsidiaries.
  *
  * Subject to your compliance with these terms, you may use Microchip software and any derivatives
  * exclusively with Microchip products. It is your responsibility to comply with third party license
@@ -20,7 +20,7 @@
  *
  */
 
-/* file generated from device description version 2022-01-06T10:27:17Z */
+/* file generated from device description version 2023-03-27T04:07:22Z */
 #ifndef _SAMRH707F18A_GPIO_H_
 #define _SAMRH707F18A_GPIO_H_
 
@@ -86,6 +86,9 @@
 #define PIN_PB26                    (   58)  /**< Pin Number for PB26 */
 #define PIN_PB27                    (   59)  /**< Pin Number for PB27 */
 #define PIN_PB28                    (   60)  /**< Pin Number for PB28 */
+#define PIN_PB29                    (   61)  /**< Pin Number for PB29 */
+#define PIN_PB30                    (   62)  /**< Pin Number for PB30 */
+#define PIN_PB31                    (   63)  /**< Pin Number for PB31 */
 #define PIN_PC0                     (   64)  /**< Pin Number for PC0 */
 #define PIN_PC1                     (   65)  /**< Pin Number for PC1 */
 #define PIN_PC2                     (   66)  /**< Pin Number for PC2 */
@@ -117,6 +120,7 @@
 #define PIN_PC28                    (   92)  /**< Pin Number for PC28 */
 #define PIN_PC29                    (   93)  /**< Pin Number for PC29 */
 #define PIN_PC30                    (   94)  /**< Pin Number for PC30 */
+#define PIN_PC31                    (   95)  /**< Pin Number for PC31 */
 #define PIN_PD0                     (   96)  /**< Pin Number for PD0 */
 #define PIN_PD1                     (   97)  /**< Pin Number for PD1 */
 #define PIN_PD2                     (   98)  /**< Pin Number for PD2 */
@@ -143,6 +147,8 @@
 #define PIN_PD23                    (  119)  /**< Pin Number for PD23 */
 #define PIN_PD24                    (  120)  /**< Pin Number for PD24 */
 #define PIN_PD25                    (  121)  /**< Pin Number for PD25 */
+#define PIN_PD26                    (  122)  /**< Pin Number for PD26 */
+#define PIN_PD27                    (  123)  /**< Pin Number for PD27 */
 #define PIN_PD28                    (  124)  /**< Pin Number for PD28 */
 #define PIN_PD29                    (  125)  /**< Pin Number for PD29 */
 #define PIN_PD30                    (  126)  /**< Pin Number for PD30 */
@@ -210,6 +216,9 @@
 #define PIO_PB26                    (_UINT32_(1) << 26) /**< PIO mask for PB26 */
 #define PIO_PB27                    (_UINT32_(1) << 27) /**< PIO mask for PB27 */
 #define PIO_PB28                    (_UINT32_(1) << 28) /**< PIO mask for PB28 */
+#define PIO_PB29                    (_UINT32_(1) << 29) /**< PIO mask for PB29 */
+#define PIO_PB30                    (_UINT32_(1) << 30) /**< PIO mask for PB30 */
+#define PIO_PB31                    (_UINT32_(1) << 31) /**< PIO mask for PB31 */
 #define PIO_PC0                     (_UINT32_(1) << 0) /**< PIO mask for PC0 */
 #define PIO_PC1                     (_UINT32_(1) << 1) /**< PIO mask for PC1 */
 #define PIO_PC2                     (_UINT32_(1) << 2) /**< PIO mask for PC2 */
@@ -241,6 +250,7 @@
 #define PIO_PC28                    (_UINT32_(1) << 28) /**< PIO mask for PC28 */
 #define PIO_PC29                    (_UINT32_(1) << 29) /**< PIO mask for PC29 */
 #define PIO_PC30                    (_UINT32_(1) << 30) /**< PIO mask for PC30 */
+#define PIO_PC31                    (_UINT32_(1) << 31) /**< PIO mask for PC31 */
 #define PIO_PD0                     (_UINT32_(1) << 0) /**< PIO mask for PD0 */
 #define PIO_PD1                     (_UINT32_(1) << 1) /**< PIO mask for PD1 */
 #define PIO_PD2                     (_UINT32_(1) << 2) /**< PIO mask for PD2 */
@@ -267,6 +277,8 @@
 #define PIO_PD23                    (_UINT32_(1) << 23) /**< PIO mask for PD23 */
 #define PIO_PD24                    (_UINT32_(1) << 24) /**< PIO mask for PD24 */
 #define PIO_PD25                    (_UINT32_(1) << 25) /**< PIO mask for PD25 */
+#define PIO_PD26                    (_UINT32_(1) << 26) /**< PIO mask for PD26 */
+#define PIO_PD27                    (_UINT32_(1) << 27) /**< PIO mask for PD27 */
 #define PIO_PD28                    (_UINT32_(1) << 28) /**< PIO mask for PD28 */
 #define PIO_PD29                    (_UINT32_(1) << 29) /**< PIO mask for PD29 */
 #define PIO_PD30                    (_UINT32_(1) << 30) /**< PIO mask for PD30 */
@@ -395,15 +407,24 @@
 #define PIN_PD13B_FLEXCOM2_IO2                     _UINT32_(109) /**< FLEXCOM2 signal: FLEXCOM2_IO2 on PD13 mux B */
 #define MUX_PD13B_FLEXCOM2_IO2                     _UINT32_(1)  /**< FLEXCOM2 signal line function value: FLEXCOM2_IO2 */
 #define PIO_PD13B_FLEXCOM2_IO2                     (_UINT32_(1) << 13) /**< FLEXCOM2 signal: FLEXCOM2_IO2 */
+#define PIN_PD26A_FLEXCOM2_IO2                     _UINT32_(122) /**< FLEXCOM2 signal: FLEXCOM2_IO2 on PD26 mux A */
+#define MUX_PD26A_FLEXCOM2_IO2                     _UINT32_(0)  /**< FLEXCOM2 signal line function value: FLEXCOM2_IO2 */
+#define PIO_PD26A_FLEXCOM2_IO2                     (_UINT32_(1) << 26) /**< FLEXCOM2 signal: FLEXCOM2_IO2 */
 #define PIN_PC17A_FLEXCOM2_IO3                     _UINT32_(81) /**< FLEXCOM2 signal: FLEXCOM2_IO3 on PC17 mux A */
 #define MUX_PC17A_FLEXCOM2_IO3                     _UINT32_(0)  /**< FLEXCOM2 signal line function value: FLEXCOM2_IO3 */
 #define PIO_PC17A_FLEXCOM2_IO3                     (_UINT32_(1) << 17) /**< FLEXCOM2 signal: FLEXCOM2_IO3 */
 #define PIN_PD17B_FLEXCOM2_IO3                     _UINT32_(113) /**< FLEXCOM2 signal: FLEXCOM2_IO3 on PD17 mux B */
 #define MUX_PD17B_FLEXCOM2_IO3                     _UINT32_(1)  /**< FLEXCOM2 signal line function value: FLEXCOM2_IO3 */
 #define PIO_PD17B_FLEXCOM2_IO3                     (_UINT32_(1) << 17) /**< FLEXCOM2 signal: FLEXCOM2_IO3 */
+#define PIN_PD27A_FLEXCOM2_IO3                     _UINT32_(123) /**< FLEXCOM2 signal: FLEXCOM2_IO3 on PD27 mux A */
+#define MUX_PD27A_FLEXCOM2_IO3                     _UINT32_(0)  /**< FLEXCOM2 signal line function value: FLEXCOM2_IO3 */
+#define PIO_PD27A_FLEXCOM2_IO3                     (_UINT32_(1) << 27) /**< FLEXCOM2 signal: FLEXCOM2_IO3 */
 #define PIN_PC18A_FLEXCOM2_IO4                     _UINT32_(82) /**< FLEXCOM2 signal: FLEXCOM2_IO4 on PC18 mux A */
 #define MUX_PC18A_FLEXCOM2_IO4                     _UINT32_(0)  /**< FLEXCOM2 signal line function value: FLEXCOM2_IO4 */
 #define PIO_PC18A_FLEXCOM2_IO4                     (_UINT32_(1) << 18) /**< FLEXCOM2 signal: FLEXCOM2_IO4 */
+#define PIN_PC31A_FLEXCOM2_IO4                     _UINT32_(95) /**< FLEXCOM2 signal: FLEXCOM2_IO4 on PC31 mux A */
+#define MUX_PC31A_FLEXCOM2_IO4                     _UINT32_(0)  /**< FLEXCOM2 signal line function value: FLEXCOM2_IO4 */
+#define PIO_PC31A_FLEXCOM2_IO4                     (_UINT32_(1) << 31) /**< FLEXCOM2 signal: FLEXCOM2_IO4 */
 #define PIN_PD11B_FLEXCOM2_IO4                     _UINT32_(107) /**< FLEXCOM2 signal: FLEXCOM2_IO4 on PD11 mux B */
 #define MUX_PD11B_FLEXCOM2_IO4                     _UINT32_(1)  /**< FLEXCOM2 signal line function value: FLEXCOM2_IO4 */
 #define PIO_PD11B_FLEXCOM2_IO4                     (_UINT32_(1) << 11) /**< FLEXCOM2 signal: FLEXCOM2_IO4 */
@@ -426,15 +447,24 @@
 #define PIN_PB17B_FLEXCOM3_IO2                     _UINT32_(49) /**< FLEXCOM3 signal: FLEXCOM3_IO2 on PB17 mux B */
 #define MUX_PB17B_FLEXCOM3_IO2                     _UINT32_(1)  /**< FLEXCOM3 signal line function value: FLEXCOM3_IO2 */
 #define PIO_PB17B_FLEXCOM3_IO2                     (_UINT32_(1) << 17) /**< FLEXCOM3 signal: FLEXCOM3_IO2 */
+#define PIN_PB30B_FLEXCOM3_IO2                     _UINT32_(62) /**< FLEXCOM3 signal: FLEXCOM3_IO2 on PB30 mux B */
+#define MUX_PB30B_FLEXCOM3_IO2                     _UINT32_(1)  /**< FLEXCOM3 signal line function value: FLEXCOM3_IO2 */
+#define PIO_PB30B_FLEXCOM3_IO2                     (_UINT32_(1) << 30) /**< FLEXCOM3 signal: FLEXCOM3_IO2 */
 #define PIN_PB18B_FLEXCOM3_IO3                     _UINT32_(50) /**< FLEXCOM3 signal: FLEXCOM3_IO3 on PB18 mux B */
 #define MUX_PB18B_FLEXCOM3_IO3                     _UINT32_(1)  /**< FLEXCOM3 signal line function value: FLEXCOM3_IO3 */
 #define PIO_PB18B_FLEXCOM3_IO3                     (_UINT32_(1) << 18) /**< FLEXCOM3 signal: FLEXCOM3_IO3 */
+#define PIN_PB31B_FLEXCOM3_IO3                     _UINT32_(63) /**< FLEXCOM3 signal: FLEXCOM3_IO3 on PB31 mux B */
+#define MUX_PB31B_FLEXCOM3_IO3                     _UINT32_(1)  /**< FLEXCOM3 signal line function value: FLEXCOM3_IO3 */
+#define PIO_PB31B_FLEXCOM3_IO3                     (_UINT32_(1) << 31) /**< FLEXCOM3 signal: FLEXCOM3_IO3 */
 #define PIN_PB20B_FLEXCOM3_IO4                     _UINT32_(52) /**< FLEXCOM3 signal: FLEXCOM3_IO4 on PB20 mux B */
 #define MUX_PB20B_FLEXCOM3_IO4                     _UINT32_(1)  /**< FLEXCOM3 signal line function value: FLEXCOM3_IO4 */
 #define PIO_PB20B_FLEXCOM3_IO4                     (_UINT32_(1) << 20) /**< FLEXCOM3 signal: FLEXCOM3_IO4 */
 #define PIN_PB16B_FLEXCOM3_IO5                     _UINT32_(48) /**< FLEXCOM3 signal: FLEXCOM3_IO5 on PB16 mux B */
 #define MUX_PB16B_FLEXCOM3_IO5                     _UINT32_(1)  /**< FLEXCOM3 signal line function value: FLEXCOM3_IO5 */
 #define PIO_PB16B_FLEXCOM3_IO5                     (_UINT32_(1) << 16) /**< FLEXCOM3 signal: FLEXCOM3_IO5 */
+#define PIN_PB29B_FLEXCOM3_IO5                     _UINT32_(61) /**< FLEXCOM3 signal: FLEXCOM3_IO5 on PB29 mux B */
+#define MUX_PB29B_FLEXCOM3_IO5                     _UINT32_(1)  /**< FLEXCOM3 signal line function value: FLEXCOM3_IO5 */
+#define PIO_PB29B_FLEXCOM3_IO5                     (_UINT32_(1) << 29) /**< FLEXCOM3 signal: FLEXCOM3_IO5 */
 #define PIN_PB19B_FLEXCOM3_IO6                     _UINT32_(51) /**< FLEXCOM3 signal: FLEXCOM3_IO6 on PB19 mux B */
 #define MUX_PB19B_FLEXCOM3_IO6                     _UINT32_(1)  /**< FLEXCOM3 signal line function value: FLEXCOM3_IO6 */
 #define PIO_PB19B_FLEXCOM3_IO6                     (_UINT32_(1) << 19) /**< FLEXCOM3 signal: FLEXCOM3_IO6 */
@@ -904,6 +934,44 @@
 #define PIN_PC28C_TC2_TIOB8                        _UINT32_(92) /**< TC2 signal: TC2_TIOB8 on PC28 mux C */
 #define MUX_PC28C_TC2_TIOB8                        _UINT32_(2)  /**< TC2 signal line function value: TC2_TIOB8 */
 #define PIO_PC28C_TC2_TIOB8                        (_UINT32_(1) << 28) /**< TC2 signal: TC2_TIOB8 */
+/* ========== PIO definition for ICE peripheral ========== */
+#define PIN_PB24A_ICE_SWDCLK                       _UINT32_(56) /**< ICE signal: ICE_SWDCLK on PB24 mux A */
+#define MUX_PB24A_ICE_SWDCLK                       _UINT32_(0)  /**< ICE signal line function value: ICE_SWDCLK */
+#define PIO_PB24A_ICE_SWDCLK                       (_UINT32_(1) << 24) /**< ICE signal: ICE_SWDCLK */
+#define PIN_PB23A_ICE_SWDIO                        _UINT32_(55) /**< ICE signal: ICE_SWDIO on PB23 mux A */
+#define MUX_PB23A_ICE_SWDIO                        _UINT32_(0)  /**< ICE signal line function value: ICE_SWDIO */
+#define PIO_PB23A_ICE_SWDIO                        (_UINT32_(1) << 23) /**< ICE signal: ICE_SWDIO */
+#define PIN_PB24A_ICE_TCK                          _UINT32_(56) /**< ICE signal: ICE_TCK on PB24 mux A */
+#define MUX_PB24A_ICE_TCK                          _UINT32_(0)  /**< ICE signal line function value: ICE_TCK */
+#define PIO_PB24A_ICE_TCK                          (_UINT32_(1) << 24) /**< ICE signal: ICE_TCK */
+#define PIN_PA26E_ICE_TDI                          _UINT32_(26) /**< ICE signal: ICE_TDI on PA26 mux E */
+#define MUX_PA26E_ICE_TDI                          _UINT32_(4)  /**< ICE signal line function value: ICE_TDI */
+#define PIO_PA26E_ICE_TDI                          (_UINT32_(1) << 26) /**< ICE signal: ICE_TDI */
+#define PIN_PA25E_ICE_TDO                          _UINT32_(25) /**< ICE signal: ICE_TDO on PA25 mux E */
+#define MUX_PA25E_ICE_TDO                          _UINT32_(4)  /**< ICE signal line function value: ICE_TDO */
+#define PIO_PA25E_ICE_TDO                          (_UINT32_(1) << 25) /**< ICE signal: ICE_TDO */
+#define PIN_PB23A_ICE_TMS                          _UINT32_(55) /**< ICE signal: ICE_TMS on PB23 mux A */
+#define MUX_PB23A_ICE_TMS                          _UINT32_(0)  /**< ICE signal line function value: ICE_TMS */
+#define PIO_PB23A_ICE_TMS                          (_UINT32_(1) << 23) /**< ICE signal: ICE_TMS */
+#define PIN_PA25E_ICE_TRACESWO                     _UINT32_(25) /**< ICE signal: ICE_TRACESWO on PA25 mux E */
+#define MUX_PA25E_ICE_TRACESWO                     _UINT32_(4)  /**< ICE signal line function value: ICE_TRACESWO */
+#define PIO_PA25E_ICE_TRACESWO                     (_UINT32_(1) << 25) /**< ICE signal: ICE_TRACESWO */
+/* ========== PIO definition for TPIU peripheral ========== */
+#define PIN_PA20E_TPIU_TRACECLK                    _UINT32_(20) /**< TPIU signal: TPIU_TRACECLK on PA20 mux E */
+#define MUX_PA20E_TPIU_TRACECLK                    _UINT32_(4)  /**< TPIU signal line function value: TPIU_TRACECLK */
+#define PIO_PA20E_TPIU_TRACECLK                    (_UINT32_(1) << 20) /**< TPIU signal: TPIU_TRACECLK */
+#define PIN_PA29E_TPIU_TRACED0                     _UINT32_(29) /**< TPIU signal: TPIU_TRACED0 on PA29 mux E */
+#define MUX_PA29E_TPIU_TRACED0                     _UINT32_(4)  /**< TPIU signal line function value: TPIU_TRACED0 */
+#define PIO_PA29E_TPIU_TRACED0                     (_UINT32_(1) << 29) /**< TPIU signal: TPIU_TRACED0 */
+#define PIN_PA30E_TPIU_TRACED1                     _UINT32_(30) /**< TPIU signal: TPIU_TRACED1 on PA30 mux E */
+#define MUX_PA30E_TPIU_TRACED1                     _UINT32_(4)  /**< TPIU signal line function value: TPIU_TRACED1 */
+#define PIO_PA30E_TPIU_TRACED1                     (_UINT32_(1) << 30) /**< TPIU signal: TPIU_TRACED1 */
+#define PIN_PA28E_TPIU_TRACED2                     _UINT32_(28) /**< TPIU signal: TPIU_TRACED2 on PA28 mux E */
+#define MUX_PA28E_TPIU_TRACED2                     _UINT32_(4)  /**< TPIU signal line function value: TPIU_TRACED2 */
+#define PIO_PA28E_TPIU_TRACED2                     (_UINT32_(1) << 28) /**< TPIU signal: TPIU_TRACED2 */
+#define PIN_PA27E_TPIU_TRACED3                     _UINT32_(27) /**< TPIU signal: TPIU_TRACED3 on PA27 mux E */
+#define MUX_PA27E_TPIU_TRACED3                     _UINT32_(4)  /**< TPIU signal line function value: TPIU_TRACED3 */
+#define PIO_PA27E_TPIU_TRACED3                     (_UINT32_(1) << 27) /**< TPIU signal: TPIU_TRACED3 */
 
 #endif /* _SAMRH707F18A_GPIO_H_ */
 

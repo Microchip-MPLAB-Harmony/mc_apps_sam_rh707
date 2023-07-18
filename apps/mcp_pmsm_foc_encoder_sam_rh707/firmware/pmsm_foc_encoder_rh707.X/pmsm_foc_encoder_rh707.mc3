@@ -1,4 +1,4 @@
-<config configName="mclv2_sam_rh707_pim" projectName="pmsm_foc_encoder_rh707" configVersion="1.1" device="ATSAMRH707F18A" deviceLibraryClass="com.microchip.mcc.harmony.Harmony3Library" coreVersion="5.4.4">
+<config configName="mclv2_sam_rh707_pim" projectName="pmsm_foc_encoder_rh707" configVersion="1.1" device="ATSAMRH707F18A" deviceLibraryClass="com.microchip.mcc.harmony.Harmony3Library" coreVersion="5.5.7">
    <usedPackages class="java.util.ArrayList"/>
    <usedClasses class="java.util.TreeMap">
       <entry>
@@ -4467,19 +4467,19 @@
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\component\sfr.h</file>
-         <hash>694b080d72feba5e72c23176ca01cbab10afd3a7b2ef4d921bded9f96af7d6e6</hash>
+         <hash>7b4d6393bb529de3da4fa2b6a6e155d3c9c6c795d806977dcdce766a81b2d313</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\instance\crccu.h</file>
-         <hash>c00ab2a3d48ffb896312a3c090534591a1b845339872e1088c6f1d675b476f65</hash>
+         <hash>b7cb5a7e62cc31df4a0d23fde31a8b26ffc85e1b5f737bdc718dc165c54c085b</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\instance\tcmecc.h</file>
-         <hash>2a31b089ee68c73b0e525da829039e54fd609eee8c29c89af8123a69b069af31</hash>
+         <hash>27df9b06d663f9bfe37265bf3034f7c98d7606dac1f2b6a2c8aaaf987960b4d2</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\component\flexramecc.h</file>
-         <hash>bada693ea8d9947fec6f838d7da970196b4d723d5da5399334fdadc7dad211da</hash>
+         <hash>65ef62a65ada12e14e517601d1803348c3836ec21c34a64ea24fb76bfc1cb0a4</hash>
       </entry>
       <entry>
          <file>..\src\config\mclv2_sam_rh707_pim\peripheral\pwm\plib_pwm_common.h</file>
@@ -4487,87 +4487,87 @@
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\instance\pwm1.h</file>
-         <hash>054d709c3b509ffae5c22fc2709f8904867fa08cd1c92eaf8bf75e4a256144b6</hash>
+         <hash>9318d4efa7b103d6ef3c0ea471403267f1e408518e3e6b16cc85a004927ffa80</hash>
       </entry>
       <entry>
          <file>..\src\config\mclv2_sam_rh707_pim\peripheral\nvic\plib_nvic.c</file>
-         <hash>f1f72dc8da662c903bb39ad9a25d07cc07aea9bd68dacbd91f9fbf3244e994b3</hash>
+         <hash>2be956b60db811cfab6c4668af68a57eba1a44c2b20e9e1bf3e134c29df0a4a1</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\instance\pio.h</file>
-         <hash>9adc3cbcecc951ecabaf0880492cfd8297109b9b5659abe9bda1665c77463c3c</hash>
+         <hash>a5d80bcf2b94c930c6f5a65a6a45ed05db36035bcd451d8cabf068b3e3282e7f</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\component\crccu.h</file>
-         <hash>6bef8c6b77534229be0483156aaec2f98fb27e3c2d4c8779fd39285b12bd79a1</hash>
+         <hash>fe1f1d38f707237ec83a186fa85e2b705c5e954ea88ecabc8deaab2668fe8328</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\component\rstc.h</file>
-         <hash>7815535170a6b3d9c9aee5c45f26b2ab51d9b1b22ccd3412d51fbc76691ce2d1</hash>
+         <hash>57fe34861c8326ec8ea2a5327fec02c3074588d0421ca4b4cee58b01bd554b10</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\instance\spw.h</file>
-         <hash>0c700f08d5efb5f91ba0f3840dec12df2e35f25e227a0f1d6c979a29af3d84c1</hash>
+         <hash>a196b06a7f68af3087f512273f1f547994fd1cc38b7c9c16842e3e5c99c8ffc7</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\component\sha.h</file>
-         <hash>eaa8998e5141604284315490a94bd89dfb7ea23ff2a65951a2a805fbe79ae546</hash>
+         <hash>1ab78a9b419f887cb087c4b7c58f6f4676ad75870498ac7191401116cc50e0c7</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\component\matrix.h</file>
-         <hash>a83469503937ed5863cb662da239553e8753b0f781513a14d3be35c8105d6f5a</hash>
+         <hash>20896c1a9037ac66e138cb1134442e2c7b1ea86640e276025aae1517eaea0ffb</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\component\hemc.h</file>
-         <hash>b57f260510d5f946b9befbedeff408439f9be302bb183741104140e9e4363747</hash>
+         <hash>f4ec9d412f65d1317678fffc222305d40994d2f1568f1391bd4ee15d5cd5cfc4</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\instance\mcan0.h</file>
-         <hash>bcef4e101102d26a635d7061b0deca729a1ef20a60df0970f41e2f3f67da2c61</hash>
+         <hash>4a6a13a9065511dea8eb091c23896964252c1d20a24e99079ca06e803603d670</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\instance\dacc.h</file>
-         <hash>39b12c765227175723dbffd76f5f94f85c036c27e5bd4d03ee0b0def044bdf2b</hash>
+         <hash>37c07e332c4529a4160f045c3305cc61c01192bba0db26ac63ea1c0eaafc0411</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\instance\wdt.h</file>
-         <hash>fc1328c7a14c56d69c7d068cbbae98239af249faf7487ab38484b9eadc2af424</hash>
+         <hash>f69b81d25fcb88a200085eeda99313d41399027b9d739c4b06f8eb4fcdec19c7</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\component\pmc.h</file>
-         <hash>0e24f85cad5ee9099e2729b0e423c10aeb8838ab1cf4eef16530275efec758a0</hash>
+         <hash>a6769081a26c1092e5327593a5782ba4241b622c7d0f0da9477d42e96490103d</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\instance\flexcom1.h</file>
-         <hash>e8a7d544f51f083ed43aa451adc1add43e1d8463ca96483fb315b3ee025deebb</hash>
+         <hash>60b2c84729f78a02820a14d5618d447ad1da326debe07be4486a3ce6cabc63a9</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\instance\tc0.h</file>
-         <hash>d9c3950e7111acc36d93e487605883ab061698bc427bf8b1c272141d93820ef6</hash>
+         <hash>1ca809e45b9050942478d3b6767f78a9582aed2b7454b071e9ce6c471724c070</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\instance\rswdt.h</file>
-         <hash>2dcfd13e7d2d882b4b5730169564421e9061dfe53c797339c7d7787e1fbf5bcc</hash>
+         <hash>669f7a8e6b9d8c68adde5be03c6e5ea3b0352b1a1e65c65d1abf06de16388f3f</hash>
       </entry>
       <entry>
          <file>..\src\config\mclv2_sam_rh707_pim\X2CCode\X2CScope\src\X2CScope.c</file>
-         <hash>8dcc8745b5a12a4c35c2893d601be3df1cfb4d522d7cb0d37627a2c3b629e7e0</hash>
+         <hash>bb60724b6946a3d5e51f5f7f227a304cabcecba3851d7e6d40a1a04306a45a2e</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\component\tc.h</file>
-         <hash>0fc0d6d3fd5805c655545e29e2d5078550d9062dd45654eead5c3210cd3e9854</hash>
+         <hash>30d474e8fa9575484197c31a2c567fd6872c97d60d2a78ce9746ab1c7a5372c9</hash>
       </entry>
       <entry>
          <file>..\src\config\mclv2_sam_rh707_pim\peripheral\tc\plib_tc0.h</file>
-         <hash>97f74f89c5e9bc3ab8f80b945838a2c8f3b6c570b5263ac92729cc0843c05588</hash>
+         <hash>cda0990496ea3c3c5b6826f158ce55af7ac3f3bd506cca837fa554d90886dc7f</hash>
       </entry>
       <entry>
          <file>..\src\config\mclv2_sam_rh707_pim\peripheral\matrix\plib_matrix.c</file>
-         <hash>6db0dae4d420f98e7b3cb99f2dc3c628c94407e92f147326c810c9dc3299a3a1</hash>
+         <hash>eed17d06984b30c2c82a2f13fec57f4737f5561ce0693075fc10ec002c425d19</hash>
       </entry>
       <entry>
          <file>..\src\config\mclv2_sam_rh707_pim\interrupts.c</file>
-         <hash>2050d67f048518f69da3933440731c69bf4620cf00e90b6810950d3c4948c3a9</hash>
+         <hash>c870955ec4b271a03f0c55e2a017ab059a0c6851e8bf3ac6a255dfcb2013ed99</hash>
       </entry>
       <entry>
          <file>..\src\config\mclv2_sam_rh707_pim\device.h</file>
@@ -4575,11 +4575,11 @@
       </entry>
       <entry>
          <file>..\src\config\mclv2_sam_rh707_pim\peripheral\flexcom\usart\plib_flexcom_usart_local.h</file>
-         <hash>ee1b0e9b5167a747d4c6cf8fa8c67027d7b50e44c3757b092670adac497b0741</hash>
+         <hash>d7d8e1bab1992fd5471cbee03dfbe206d761d9e622c721c08f3546ef7d335b64</hash>
       </entry>
       <entry>
          <file>..\src\config\mclv2_sam_rh707_pim\peripheral\tc\plib_tc_common.h</file>
-         <hash>18de4e464f8009ae88ff57f51eade38db795cae08b4a09570ef487e4e980d086</hash>
+         <hash>920c335908d58caf6b00d824870cc7c8b80011a09c27e6ff7b56f6fc237ee5c5</hash>
       </entry>
       <entry>
          <file>..\src\packs\CMSIS\CMSIS\Core\Include\mpu_armv7.h</file>
@@ -4587,7 +4587,7 @@
       </entry>
       <entry>
          <file>..\src\config\mclv2_sam_rh707_pim\device_vectors.h</file>
-         <hash>2e095c6ff432da3e5b435427370ae9f5abf8b024c9ae3316b6e77217af5a6f9d</hash>
+         <hash>b6460d0e4c5c19fdebe9636d4c850c09a467c937bd7f537b0debf2ec53866d8f</hash>
       </entry>
       <entry>
          <file>..\src\config\mclv2_sam_rh707_pim\interrupts.h</file>
@@ -4603,19 +4603,19 @@
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\instance\pwm0.h</file>
-         <hash>3454f7b2f584084983c1b97aa90e6e5be8a0bd985c9e1e3e34731f66c95155bd</hash>
+         <hash>5d0684963eb796b3708a8b96f58a314c2a4f12698d413b5865c019806f019acb</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\instance\mcan1.h</file>
-         <hash>71c282890646a03178bcd44eff8ccec2771729d1b267c4c87f18d0a32b52c7c1</hash>
+         <hash>1516f9c758fcd3565a7c0cb67a617b762930bbfe24119f859d079b1092a0d223</hash>
       </entry>
       <entry>
          <file>..\src\config\mclv2_sam_rh707_pim\peripheral\pwm\plib_pwm0.c</file>
-         <hash>ddcfc33df5fb6dbe2186016524c2a2937f1b899c2b6b7bb1fecd4c6113a7747e</hash>
+         <hash>ee80991818d5853911ca0de3cebb75efba314aa42aadeb7a5179a49d62f733c0</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\component\rtt.h</file>
-         <hash>ce026606d036f9e35f2d0478bf96f75e7708990a5d5f57ba0e154b51a18071f2</hash>
+         <hash>79f3bb18239591bebf54f51c1ebf4ac83d8a75ae67f1ffbbcf2c6717fe74dac4</hash>
       </entry>
       <entry>
          <file>..\src\packs\CMSIS\CMSIS\Core\Include\cmsis_armclang.h</file>
@@ -4623,11 +4623,11 @@
       </entry>
       <entry>
          <file>..\src\config\mclv2_sam_rh707_pim\peripheral\tc\plib_tc0.c</file>
-         <hash>f77d8f114c980b44e31df09687bce8df2367e674a7e52f66859ef001b6a3431d</hash>
+         <hash>edd2591a3b715994972290a64cbc55a6f598e17ae3986abcb9d158df2f92c922</hash>
       </entry>
       <entry>
          <file>..\src\config\mclv2_sam_rh707_pim\ATSAMRH707F18A.ld</file>
-         <hash>a1f38f104684e54469dceda3225e24c832777c924c8306bb063daaa564414fc7</hash>
+         <hash>838e4d370ba86e5d0c49551e181e46b4229ba5e533fad6f6d43e69b4482f9c0b</hash>
       </entry>
       <entry>
          <file>..\src\config\mclv2_sam_rh707_pim\peripheral\pwm\plib_pwm0.h</file>
@@ -4643,11 +4643,11 @@
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\instance\chipid.h</file>
-         <hash>08893a359becdd64c35c45c6df6ce3f286b5a8c628c6f02c4ff274454004da1f</hash>
+         <hash>8d1c09e207a97f9a209705b2352f8fd2ccd1e8d4e114ce7d9b9551ab3db44ec0</hash>
       </entry>
       <entry>
          <file>..\src\config\mclv2_sam_rh707_pim\peripheral\clk\plib_clk.h</file>
-         <hash>ca039278875d8cfb69030065b3cf63a7fa60b2820c11c987388d6f34fe874b23</hash>
+         <hash>9224edec74827f2404150c50fbba3f53cfc08f10934e222fdb352c299c186c0b</hash>
       </entry>
       <entry>
          <file>..\src\packs\CMSIS\CMSIS\Core\Include\cmsis_compiler.h</file>
@@ -4655,63 +4655,63 @@
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\component\dacc.h</file>
-         <hash>612e1ec6b45e6f7073e26d47f58da0fa3dcedc576b3867d89839f376d0345fe4</hash>
+         <hash>8e4337da87daa8c38aa5ba20c67c238eea36636fb8d3bca80af7a69a955f95f8</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\component\supc.h</file>
-         <hash>544e3f6e9064218b78a130baae1f45c7d3c439148f57079a0c827dad157625d7</hash>
+         <hash>207a9615dcf5249e14d75623f2b75b467fd52d080224e2a3adc5e60c23a66c15</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\component\rtc.h</file>
-         <hash>9eb412b353962947e44b2020f81bc7ca9712a316ec2fe7cf65b911382c6f1abc</hash>
+         <hash>663b6296658ed8d04ffa3d52da5e598692f51eaff08a934324983bea7755fef5</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\instance\flexramecc.h</file>
-         <hash>b731eeabded2327033842fa2f7b04a0beff4d0838539ffe19b203531b630d1b9</hash>
+         <hash>de22ea440c32d4298076c09bd292104ee64139395e7214a719c679416e2cbc84</hash>
       </entry>
       <entry>
          <file>..\src\config\mclv2_sam_rh707_pim\definitions.h</file>
-         <hash>36c0f1a43fb81b74e723474db98ca982e188344cb46eb8e0f7103320e8082586</hash>
+         <hash>ba746a198a106047a984041b98293ce3a9de4f3a38a232e5977e8954341fa903</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\component\rswdt.h</file>
-         <hash>ca5f1a04b36230b679aa813670e7f6ab721f92f5ba50a6d92a01e22b76b66945</hash>
+         <hash>33095db19d3e50a488342bbc618ae81555fdcf64fb5ad1176109475def03f61e</hash>
       </entry>
       <entry>
          <file>..\src\config\mclv2_sam_rh707_pim\peripheral\clk\plib_clk.c</file>
-         <hash>45c759668c794b78378fa1e4aa61b7a48ee59f67581078af46bfcaf158a0f2ad</hash>
+         <hash>0967bf9a35450bc7174981272646510f4962d4ebf0b43e7fa69066f79a7c201e</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\instance\flexcom0.h</file>
-         <hash>2a7dedae053f10b1f64c04fd2e40250547014330ccc260e3ebe2efc1abd73ff1</hash>
+         <hash>3edb72e5e87f42fbf5ee6fb2513ef97db0271116c4edbda7d19d42e116263033</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\instance\hefc.h</file>
-         <hash>5cc161cc8631832577333610b7466e6387949a0576062a907c64922a7eb4fe36</hash>
+         <hash>f61e603f3709ab6ccefbc895f3e8fea85d97cb1ae15044bf3cb630c4e5abcdc6</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\instance\adc.h</file>
-         <hash>41e570e348cd4c16930a73c058d15e469a808db42bd4db9972bc2a29d0f4f5c8</hash>
+         <hash>8116b60d4ae4face9a87fd80478443cbe84daab454f1ab53df42ea28c36d764f</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\instance\ip1553.h</file>
-         <hash>04fe0db2bae6c99e6615886e49db70f0c41593f9ef311afa13bf96d1aa059477</hash>
+         <hash>a98b935759e3c2a22516f86c563213d1393d0dc8aaa5c4f66e73693c2ce8bb2a</hash>
       </entry>
       <entry>
          <file>..\src\config\mclv2_sam_rh707_pim\initialization.c</file>
-         <hash>7207b2bf4eb446083f38cfd0a1404954c727e5bd79b0839e56be1d497bdfbb31</hash>
+         <hash>7611623455d49eb15c49f6288fddc6e995c21a436bbdecd8261739a45c3c35f4</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\instance\pcc.h</file>
-         <hash>f915b900dd815c1ad8c25a48e1ffe9216ce910fac7b304317e95f2ec080f8226</hash>
+         <hash>c2d763ae40566132bab71ba88f0f8fbab3eb09e7a219f3bfe4f5f9198ef098a4</hash>
       </entry>
       <entry>
          <file>..\src\config\mclv2_sam_rh707_pim\X2CCode\X2CScope\src\X2CScopeCommunication.c</file>
-         <hash>989f06782bd1e3dfb7bc24f50c42bfcce1aef3f646392eb0a6a01a9e8fe2db20</hash>
+         <hash>1311fdd1862338a7b056adcff32d38d92b8349d6d774e92c6be315f35bbef7dc</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\component\trng.h</file>
-         <hash>7298f78d2bc1f1d07b077ac83dac5e9727c2a8f4463d7e94fd5da0270e740ab6</hash>
+         <hash>17bcdc050091975d1979a6d35b50471b7cf92d1e76ba15333e271c4e686edc33</hash>
       </entry>
       <entry>
          <file>..\src\main.c</file>
@@ -4719,7 +4719,7 @@
       </entry>
       <entry>
          <file>..\src\config\mclv2_sam_rh707_pim\toolchain_specifics.h</file>
-         <hash>39d182300448aa01753975284ddc83a9f2e5954215df1fe970920897dcc0f948</hash>
+         <hash>406ef48ae415706beb0796977cab09342077f7b1efc3f24767bd97bbd5e5a433</hash>
       </entry>
       <entry>
          <file>..\src\config\mclv2_sam_rh707_pim\pin_configurations.csv</file>
@@ -4727,27 +4727,27 @@
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\instance\pmc.h</file>
-         <hash>34a4fb36539819c12a62197650754cfcf559415154e717474029fcc622b52747</hash>
+         <hash>ae07b1ba0e8dbffb572bc3c9793e433684d9c360c7e4fb4bd42dcecb2f04bd28</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\instance\trng.h</file>
-         <hash>0141fe449b5a0022c29f8747726eb6184d5d525489215c99d7f7ffdfd6d25356</hash>
+         <hash>d864966369c35d33f7be3e26a99f021ad533c3a12811ce7946365d59e4fdc6f3</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\component\wdt.h</file>
-         <hash>92f529744b21aa4bf184bffe821cef6fa85f3f6a69296f307f992f4aa865b687</hash>
+         <hash>45b50cb2c4ef8a4c527da1956321ecf2a8617292fecf5942f4ad3fc2713cf9e6</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\instance\sha.h</file>
-         <hash>e4faca812b339c916b11fecfac3fa3a46c1e12b645c76283beb6bfedc561679f</hash>
+         <hash>9c48beddefbd2a288c210f43039cd92f7aa1b5c51f8fdecc8cc13a13c58c53f6</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\component\spw.h</file>
-         <hash>2b210cd8e43230c5f8811c5b358abbc7af0288aadf1c333334de949791abe832</hash>
+         <hash>b27eeb7e83981d7d35db4e56c38d0e28d67435ed98da270ba8fbe4e89b97eddc</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\instance\sfr.h</file>
-         <hash>0683057ea35335e06d3b8181fd1fc41c8379762ecc2b09eaf0ace9eaddc363c4</hash>
+         <hash>dd270a5843713ef2c9fd254457d34a48627b49820e350b80d5b543f2543531d1</hash>
       </entry>
       <entry>
          <file>..\src\config\mclv2_sam_rh707_pim\libc_syscalls.c</file>
@@ -4755,19 +4755,19 @@
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\instance\hsmc.h</file>
-         <hash>2a0bde2c410e924710a4b06204f1c4ffc39be11a3ed4e0474118ef68dbc45521</hash>
+         <hash>efe7fab02ef9cb36915838c8e7ead8745dfa102cdfc7db8bee15d298fa47652b</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\samrh707f18a.h</file>
-         <hash>16124f51510b32276afbf1ace5e7c1027b30d00b9e2bab35ae2e8666477e2406</hash>
+         <hash>dc8580374ef93e3a9729d2ba386a0abe1fa7b0a7c56d98007df4d0f1365c5761</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\component\pio.h</file>
-         <hash>cfc034a98ded2b0a1cf9d56be0fb9720d0427daee6e773a8c4230d8b106b0555</hash>
+         <hash>a0e9a69a84f65c63edc171a796ce983438ebfb7dff6c7d05f88fbb477ecf46b0</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\component\chipid.h</file>
-         <hash>500de1a1b13c54cb4cdf37803e450c2e3d106fd9af58d440183b5350b8dccb3e</hash>
+         <hash>44e68276bef375a3a6119d7950286da4e79588ac9899eb14a4b3f3add2570ce4</hash>
       </entry>
       <entry>
          <file>..\src\packs\CMSIS\CMSIS\Core\Include\cmsis_version.h</file>
@@ -4779,35 +4779,35 @@
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\instance\supc.h</file>
-         <hash>f6b1f119815caefd76111a767cb21051f40b48ebf9aea0201440f1e69688f6f6</hash>
+         <hash>3313fa9a7b0112a3b6526eea17cdae25c7086b62406a52ab92acaa9aa7dd28e0</hash>
       </entry>
       <entry>
          <file>..\src\config\mclv2_sam_rh707_pim\peripheral\adc\plib_adc.c</file>
-         <hash>bf42a4493744545bc91ef073e7dda2b5af423e80edb99dd4fa9599e13c0220e4</hash>
+         <hash>1494a40c3e388becc472009298beb68aada889e7b60dc3cf431a6d7a5050bf07</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\component\nmic.h</file>
-         <hash>df59810f6897ed0c17bdab0514f8c5f52a925c7f8a671a7da6a03a3ea3540de2</hash>
+         <hash>76c29ceb8572150e863aecf1e936d3f192ba02ba7baa0ca2a57c8c20107c32ec</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\component\ip1553.h</file>
-         <hash>a5d892a1c1f0b846a319275d9e12b913bedd06ab139a26d547fb668cc9470770</hash>
+         <hash>4ddfbd9bdb990c3de913a52c003b676fd7d6c39f9113e6776faec485b6848222</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\instance\tc2.h</file>
-         <hash>4adefafccb9e07585684bb5f2078b3bc59f41613e9e42c5d059654ca6ec7a9a2</hash>
+         <hash>3312b9ab86d3920b6345735545bfc1714be58542afe2d53ca346aafc3b354f78</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\instance\flexcom3.h</file>
-         <hash>eb6b307190f9b54cbbf69d1c7f21a86c0745a9df33142b32d3ca6240ad07b908</hash>
+         <hash>d81065b9993b019a7ca7779488905412f21d018ab70d2f7a80506d785c72fa22</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\component\icm.h</file>
-         <hash>6af901602d55057ee73822bae4cfe8d95fb1cc16551b7dabf4b5e2cadd8640b1</hash>
+         <hash>377a6eb55df6c2d3e0b3434d5d8a64ee9694a17cd83633844ff285f356b31394</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\pio\samrh707f18a.h</file>
-         <hash>484856118260a70198230fd56db1c17f824e4906cde68586179dc33ccef9be5e</hash>
+         <hash>7d365ef95bce05c47a8780994bc10e75b87dabccf03bf2e1d2c635450f3777c5</hash>
       </entry>
       <entry>
          <file>..\src\config\mclv2_sam_rh707_pim\peripheral\adc\plib_adc.h</file>
@@ -4815,15 +4815,15 @@
       </entry>
       <entry>
          <file>..\src\config\mclv2_sam_rh707_pim\X2CCode\X2CScope\inc\X2CScope.h</file>
-         <hash>c4c1e8964b703295e7b65ce331295da2a5b143aa63b8960f48c1e62c59fa9d07</hash>
+         <hash>d9ee6e53198dda1c1cf2982d9769cfd8f011538aa7c38304a324110cc32f8f04</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\component\hefc.h</file>
-         <hash>b2c16c53becb0b2d842c6e69e2f62f236100826afcc645b8afd461b9c361c4d7</hash>
+         <hash>fe2a788d03de0e7ad11c82ea3ee48de5829351946cf7e41eefda2f52e34ab8fb</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\component\hsmc.h</file>
-         <hash>2d2ccd8555325574af507ea16796e454540897f435330a36036d72c088840342</hash>
+         <hash>033b6b6e140569e0ab85a9ff40bd0d198240d36cdeb6e7d7f4a16578a3ea91c1</hash>
       </entry>
       <entry>
          <file>..\src\config\mclv2_sam_rh707_pim\peripheral\pio\plib_pio.h</file>
@@ -4831,11 +4831,11 @@
       </entry>
       <entry>
          <file>..\src\config\mclv2_sam_rh707_pim\startup_xc32.c</file>
-         <hash>5abd4860bfe24593003b230dde61f4e037bfd9cacad9f47b565e253fded3384d</hash>
+         <hash>40722ee56529f098a0756ac4efb07d07a93118e458a8a9807e5982225c0de3eb</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\component\mcan.h</file>
-         <hash>e97c3e9e0e505ad1d38be934b5fa3fee2ff549d651fb65613952cab4da2a9660</hash>
+         <hash>be83103a6a36c80ba04b3195120fdeabad70048fd433a92d2bbbbe1fd700ef6f</hash>
       </entry>
       <entry>
          <file>..\src\config\mclv2_sam_rh707_pim\peripheral\flexcom\usart\plib_flexcom1_usart.c</file>
@@ -4851,7 +4851,7 @@
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\component\fuses.h</file>
-         <hash>5df4a4c449d3eb686d6882796f7084286afa24010c6be5c9a511a10d3e2f9d3f</hash>
+         <hash>bb7daefd70c539c3e4a9132a0e0761e13689b427ecf1136a9e273295455e7e01</hash>
       </entry>
       <entry>
          <file>..\src\packs\CMSIS\CMSIS\Core\Include\cmsis_armclang_ltm.h</file>
@@ -4859,35 +4859,35 @@
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\component\tcmecc.h</file>
-         <hash>c9b8e2561965ab80364f8bb086e4700561f833b65fea83a5fcbaca4cef1fd3c5</hash>
+         <hash>4fdbe55bb645aa855398fe5174e85bfbafceb4b4e035794a460412545ff38916</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\instance\xdmac.h</file>
-         <hash>b7a98c6061914c65dad24db87d4d61dd1082c0f3d44ae48ec5375d529cc54a8d</hash>
+         <hash>60455bb7ff07e4d64f948dda24dddde777b14b44b6da765548f248a6e8345f29</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\instance\hemc.h</file>
-         <hash>b67dce362da86589b963dca157bf6c7a9f021170dca8bf7e2f8e3b6c1e524091</hash>
+         <hash>f0435b59c128ea8d38dbe64a9e388cd98ca777a4fc8bd67484c6459b1a35bfea</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\instance\rstc.h</file>
-         <hash>73a1a13aeced14303a4b3582c91d4c4ffba3b50c237f9e787ec06a6ed0ed6792</hash>
+         <hash>29a5abe3a8f74ef8408a9b4e8d841e1a37299d66eaf0320725f964d325005ede</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\component\pcc.h</file>
-         <hash>9d273b823d6f0337445fe9f35e50f7a44ab27c0dabf25e6310e04e5340fb09ab</hash>
+         <hash>63c8f11c25b7a1a597733a63008c7df88a4fc66db2982bffe89f9db489161019</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\instance\rtt.h</file>
-         <hash>b951bd5fda402b452217dd923446195e6310cd9cd8a85a27981d98df80515b88</hash>
+         <hash>748adee766bac32213deee2cdabb8644298da27cdd46d74dea1a9c0d33155c7b</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\instance\fuses.h</file>
-         <hash>6cd1e457e60595c1ffb8bf3dffa632081b03ef3ab55fa5ed6880d2efe6cf6ce6</hash>
+         <hash>9e78fde14e07de70d65b92a2737e02e045d682876e67fbf8dbc7a50331950e3e</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\instance\icm.h</file>
-         <hash>fdcfcce4518e1dff4b7b3837b88c3e011234d4e6f9078c6791987048819c4d32</hash>
+         <hash>d73b75fb942b4afbc284130570e2b1211955ed9d3d619cee9075abfa993e339e</hash>
       </entry>
       <entry>
          <file>..\src\packs\CMSIS\CMSIS\Core\Include\core_cm7.h</file>
@@ -4895,35 +4895,35 @@
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\instance\nmic.h</file>
-         <hash>d109d56c0ddd8df056c569af0d6b29d7d3a9c35a25c2a4632916e1e08479cdba</hash>
+         <hash>0ab10985210349f3dabbf03c7081e68b0f75462159b1bdc7b32da25e9d72dab3</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\component\flexcom.h</file>
-         <hash>d8924bae329363c2674240df9b55687a6fd43341b88602893ac9972afacc0a06</hash>
+         <hash>a297279dcb416d521dbe7ed650131b4f5a48387ca26e75e80a9a152f8cf1def0</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\component\pwm.h</file>
-         <hash>0be1dd5b640a6796bd23431df0d46035fcac067affb23eb3d6730521e5fa02aa</hash>
+         <hash>f0c4f99e2720834b1917bc99ba935744faff2e028f293a83e4f260cf48243d8b</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\component\xdmac.h</file>
-         <hash>25b4cef94dd1529c7da68837778ba4e67fb63c84b77bde07463e449b11940e82</hash>
+         <hash>228049ebcef261c930053bb616aaf973da238d273067f51f6b18d96430cab53a</hash>
       </entry>
       <entry>
          <file>..\src\config\mclv2_sam_rh707_pim\X2CCode\X2CScope\inc\X2CScopeCommunication.h</file>
-         <hash>363b149004ecc8edb607ce172f49e7c3dc7c40fc4cec7369dd596c26519604ef</hash>
+         <hash>fd5facc76afd74c7321055a89ed98ce225e492356a6f31fb95b5f2d332de3d4a</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\component\adc.h</file>
-         <hash>279e5dbc2964747faa4ff5e3403fc2edb2ffa2f07b2a3d9f1afed98587fdd3ac</hash>
+         <hash>98dc3b1d21331b145c3f050930efbab4ccfb343b4d2ebda68094949ab0016207</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\instance\tc1.h</file>
-         <hash>49c6e265ce76307267fa1445bad0704f2e4cf181d1cd4dcefc8c6f636bb83a39</hash>
+         <hash>ee7dcda3d185ce8ddafac9bf622a2aa7047181d5a04b81ee3f6bc5f94f2fd9e9</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\instance\flexcom2.h</file>
-         <hash>653232694387b1b3b53ce0308d9431f9dcf82b4175ef9bf75265ff2c3b502564</hash>
+         <hash>d58883470c9f4e73656c49f65d8c4de7aa9fd7ebc67fdbee8115f1b7101823f2</hash>
       </entry>
       <entry>
          <file>..\src\config\mclv2_sam_rh707_pim\peripheral\adc\plib_adc_common.h</file>
@@ -4931,11 +4931,11 @@
       </entry>
       <entry>
          <file>..\src\config\mclv2_sam_rh707_pim\exceptions.c</file>
-         <hash>887ebb647a339393c5f6e5adf42edc62038fe31f8401b9c077a8808f6a101aa6</hash>
+         <hash>1fd383302c4cdf1cc6a804aa03b8abe8c1e5e5e9ea3450438c34dcea441e6b34</hash>
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\instance\rtc.h</file>
-         <hash>698c85227d095faaa389a9b23fa99316988372fe61cde0947800ba3753ec180b</hash>
+         <hash>b596bc6b30d459e1ce35d8e156734ccdbcb509334f740573b0e47af157e04217</hash>
       </entry>
       <entry>
          <file>..\src\config\mclv2_sam_rh707_pim\device_cache.h</file>
@@ -4943,7 +4943,7 @@
       </entry>
       <entry>
          <file>..\src\packs\ATSAMRH707F18A_DFP\instance\matrix0.h</file>
-         <hash>4a5ae40c6336fdb099c9738d7b0d7df61d8d446666aa349f5bf091e3fee3a9fa</hash>
+         <hash>370366160d818ad19cb568dba17aa8e3a040a018583db04b7ee876d318e57689</hash>
       </entry>
    </generatedFileHashHistoryMap>
 </config>

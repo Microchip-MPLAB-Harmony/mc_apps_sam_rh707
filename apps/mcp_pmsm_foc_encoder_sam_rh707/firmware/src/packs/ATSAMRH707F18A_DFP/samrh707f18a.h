@@ -1,7 +1,7 @@
 /*
  * Header file for ATSAMRH707F18A
  *
- * Copyright (c) 2022 Microchip Technology Inc. and its subsidiaries.
+ * Copyright (c) 2023 Microchip Technology Inc. and its subsidiaries.
  *
  * Subject to your compliance with these terms, you may use Microchip software and any derivatives
  * exclusively with Microchip products. It is your responsibility to comply with third party license
@@ -20,7 +20,7 @@
  *
  */
 
-/* File generated from device description version 2022-01-06T10:27:17Z */
+/* File generated from device description version 2023-03-27T04:07:22Z */
 #ifndef _SAMRH707F18A_H_
 #define _SAMRH707F18A_H_
 
@@ -135,7 +135,7 @@ typedef enum IRQn
   TC2_CH0_IRQn              =  53, /* 53  Timer/Counter 2 Channel 0 (TC2)     */
   TC2_CH1_IRQn              =  54, /* 54  Timer/Counter 2 Channel 1 (TC2)     */
   TC2_CH2_IRQn              =  55, /* 55  Timer/Counter 2 Channel 2 (TC2)     */
-  HEMC_INTSDRAMC_IRQn       =  59, /* 59  HEMC (HEMC)                         */
+  HEMC_INTHEMC_IRQn         =  59, /* 59  HEMC (HEMC)                         */
   HEMC_INTFIX_IRQn          =  60, /* 60  HEMC (HEMC)                         */
   HEMC_INTNOFIX_IRQn        =  61, /* 61  HEMC (HEMC)                         */
   SFR_IRQn                  =  62, /* 62  Special Function Registers (SFR)    */
@@ -230,7 +230,7 @@ typedef struct _DeviceVectors
   void* pvReserved56;
   void* pvReserved57;
   void* pvReserved58;
-  void* pfnHEMC_INTSDRAMC_Handler;               /*  59 HEMC (HEMC) */
+  void* pfnHEMC_INTHEMC_Handler;                 /*  59 HEMC (HEMC) */
   void* pfnHEMC_INTFIX_Handler;                  /*  60 HEMC (HEMC) */
   void* pfnHEMC_INTNOFIX_Handler;                /*  61 HEMC (HEMC) */
   void* pfnSFR_Handler;                          /*  62 Special Function Registers (SFR) */
@@ -310,7 +310,7 @@ void HEFC_INTNOFIX_Handler         ( void );
 void TC2_CH0_Handler               ( void );
 void TC2_CH1_Handler               ( void );
 void TC2_CH2_Handler               ( void );
-void HEMC_INTSDRAMC_Handler        ( void );
+void HEMC_INTHEMC_Handler          ( void );
 void HEMC_INTFIX_Handler           ( void );
 void HEMC_INTNOFIX_Handler         ( void );
 void SFR_Handler                   ( void );
