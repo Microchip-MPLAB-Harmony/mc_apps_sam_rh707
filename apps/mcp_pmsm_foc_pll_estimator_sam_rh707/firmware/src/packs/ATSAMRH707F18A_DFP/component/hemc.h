@@ -1,7 +1,7 @@
 /*
  * Component description for HEMC
  *
- * Copyright (c) 2022 Microchip Technology Inc. and its subsidiaries.
+ * Copyright (c) 2023 Microchip Technology Inc. and its subsidiaries.
  *
  * Subject to your compliance with these terms, you may use Microchip software and any derivatives
  * exclusively with Microchip products. It is your responsibility to comply with third party license
@@ -20,7 +20,7 @@
  *
  */
 
-/* file generated from device description version 2022-01-06T10:27:17Z */
+/* file generated from device description version 2023-03-27T04:07:22Z */
 #ifndef _SAMRH707_HEMC_COMPONENT_H_
 #define _SAMRH707_HEMC_COMPONENT_H_
 
@@ -67,10 +67,7 @@
 #define HEMC_CR_NCS0_ECC_ENABLE_Pos           _UINT32_(30)                                         /* (HEMC_CR_NCS0) ECC Protection Enable Position */
 #define HEMC_CR_NCS0_ECC_ENABLE_Msk           (_UINT32_(0x1) << HEMC_CR_NCS0_ECC_ENABLE_Pos)       /* (HEMC_CR_NCS0) ECC Protection Enable Mask */
 #define HEMC_CR_NCS0_ECC_ENABLE(value)        (HEMC_CR_NCS0_ECC_ENABLE_Msk & (_UINT32_(value) << HEMC_CR_NCS0_ECC_ENABLE_Pos)) /* Assigment of value for ECC_ENABLE in the HEMC_CR_NCS0 register */
-#define HEMC_CR_NCS0_ECC12_ENABLE_Pos         _UINT32_(31)                                         /* (HEMC_CR_NCS0) BCH ECC enable Position */
-#define HEMC_CR_NCS0_ECC12_ENABLE_Msk         (_UINT32_(0x1) << HEMC_CR_NCS0_ECC12_ENABLE_Pos)     /* (HEMC_CR_NCS0) BCH ECC enable Mask */
-#define HEMC_CR_NCS0_ECC12_ENABLE(value)      (HEMC_CR_NCS0_ECC12_ENABLE_Msk & (_UINT32_(value) << HEMC_CR_NCS0_ECC12_ENABLE_Pos)) /* Assigment of value for ECC12_ENABLE in the HEMC_CR_NCS0 register */
-#define HEMC_CR_NCS0_Msk                      _UINT32_(0xE1FFFFFF)                                 /* (HEMC_CR_NCS0) Register Mask  */
+#define HEMC_CR_NCS0_Msk                      _UINT32_(0x61FFFFFF)                                 /* (HEMC_CR_NCS0) Register Mask  */
 
 
 /* -------- HEMC_CR_NCS1 : (HEMC Offset: 0x04) (R/W 32) HEMC Control Register NCS 1 -------- */
@@ -109,10 +106,7 @@
 #define HEMC_CR_NCS1_ECC_ENABLE_Pos           _UINT32_(30)                                         /* (HEMC_CR_NCS1) ECC Protection Enable Position */
 #define HEMC_CR_NCS1_ECC_ENABLE_Msk           (_UINT32_(0x1) << HEMC_CR_NCS1_ECC_ENABLE_Pos)       /* (HEMC_CR_NCS1) ECC Protection Enable Mask */
 #define HEMC_CR_NCS1_ECC_ENABLE(value)        (HEMC_CR_NCS1_ECC_ENABLE_Msk & (_UINT32_(value) << HEMC_CR_NCS1_ECC_ENABLE_Pos)) /* Assigment of value for ECC_ENABLE in the HEMC_CR_NCS1 register */
-#define HEMC_CR_NCS1_ECC12_ENABLE_Pos         _UINT32_(31)                                         /* (HEMC_CR_NCS1) BCH ECC enable Position */
-#define HEMC_CR_NCS1_ECC12_ENABLE_Msk         (_UINT32_(0x1) << HEMC_CR_NCS1_ECC12_ENABLE_Pos)     /* (HEMC_CR_NCS1) BCH ECC enable Mask */
-#define HEMC_CR_NCS1_ECC12_ENABLE(value)      (HEMC_CR_NCS1_ECC12_ENABLE_Msk & (_UINT32_(value) << HEMC_CR_NCS1_ECC12_ENABLE_Pos)) /* Assigment of value for ECC12_ENABLE in the HEMC_CR_NCS1 register */
-#define HEMC_CR_NCS1_Msk                      _UINT32_(0xC1FFFFFF)                                 /* (HEMC_CR_NCS1) Register Mask  */
+#define HEMC_CR_NCS1_Msk                      _UINT32_(0x41FFFFFF)                                 /* (HEMC_CR_NCS1) Register Mask  */
 
 
 /* -------- HEMC_CTRL : (HEMC Offset: 0x18) (R/W 32) HEMC Polarity Control register -------- */

@@ -65,6 +65,12 @@ extern "C" {
 #endif
 // DOM-IGNORE-END
 
+/* Device Information */
+#define DEVICE_NAME			 "ATSAMRH707F18A"
+#define DEVICE_ARCH			 "CORTEX-M7"
+#define DEVICE_FAMILY		 "SAMRH"
+#define DEVICE_SERIES		 "SAMRH707"
+
 /* CPU clock frequency */
 #define CPU_CLOCK_FREQUENCY 50000000
 

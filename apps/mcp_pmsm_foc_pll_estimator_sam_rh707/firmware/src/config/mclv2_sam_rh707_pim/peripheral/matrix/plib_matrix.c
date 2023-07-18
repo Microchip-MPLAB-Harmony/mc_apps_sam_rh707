@@ -70,7 +70,7 @@ void MATRIX_Initialize(void)
     MATRIX0_REGS->MATRIX_PRTSR[2] = 0x5;
 
     /* Enable Master Remap Control for SPW, IP1553, ICM and CRCCU to access address 0 */
-    MATRIX0_REGS->MATRIX_MRCR |= (1U << 9U) | (1U << 10U) | (1U << 11U) | (1U << 12U);
+    MATRIX0_REGS->MATRIX_MRCR |= (1UL << 9U) | (1UL << 10U) | (1UL << 11U) | (1UL << 12U);
 }
 
 /*******************************************************************************

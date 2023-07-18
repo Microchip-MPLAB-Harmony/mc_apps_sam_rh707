@@ -1,7 +1,7 @@
 /*
  * Instance header file for ATSAMRH707F18A
  *
- * Copyright (c) 2022 Microchip Technology Inc. and its subsidiaries.
+ * Copyright (c) 2023 Microchip Technology Inc. and its subsidiaries.
  *
  * Subject to your compliance with these terms, you may use Microchip software and any derivatives
  * exclusively with Microchip products. It is your responsibility to comply with third party license
@@ -20,14 +20,14 @@
  *
  */
 
-/* file generated from device description version 2022-01-06T10:27:17Z */
+/* file generated from device description version 2023-03-27T04:07:22Z */
 #ifndef _SAMRH707_DACC_INSTANCE_
 #define _SAMRH707_DACC_INSTANCE_
 
 
 /* ========== Instance Parameter definitions for DACC peripheral ========== */
-#define DACC_INSTANCE_ID                         (24)       
 #define DACC_CLOCK_ID                            (24)       
 #define DACC_DMAC_ID_TX                          (27)       
+#define DACC_INSTANCE_ID                         (24)       
 
 #endif /* _SAMRH707_DACC_INSTANCE_ */

@@ -52,7 +52,7 @@
 // *****************************************************************************
 // *****************************************************************************
 /* Object to hold callback function and context */
-static ADC_CALLBACK_OBJECT ADC_CallbackObj;
+volatile static ADC_CALLBACK_OBJECT ADC_CallbackObj;
 
 /* Initialize ADC peripheral */
 void ADC_Initialize(void)
@@ -190,12 +190,13 @@ void ADC_CallbackRegister(ADC_CALLBACK callback, uintptr_t context)
     ADC_CallbackObj.context = context;
 }
 /* Interrupt Handler */
-void ADC_InterruptHandler(void)
+void __attribute__((used)) ADC_InterruptHandler(void)
 {
-    uint32_t status;
-    status = ADC_REGS->ADC_ISR;
+    uint32_t status = ADC_REGS->ADC_ISR;
+    /* Additional temporary variable used to prevent MISRA violations (Rule 13.x) */
+    uintptr_t context = ADC_CallbackObj.context;
     if (ADC_CallbackObj.callback_fn != NULL)
     {
-        ADC_CallbackObj.callback_fn(status, ADC_CallbackObj.context);
+        ADC_CallbackObj.callback_fn(status, context);
     }
 }

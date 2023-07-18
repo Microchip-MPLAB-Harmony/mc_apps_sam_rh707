@@ -141,7 +141,7 @@ typedef struct H3DeviceVectorsTag
   pfn_handler_t pfnReserved56;
   pfn_handler_t pfnReserved57;
   pfn_handler_t pfnReserved58;
-  pfn_handler_t pfnHEMC_INTSDRAMC_Handler;          /* 59 HEMC SDRAM Controller */
+  pfn_handler_t pfnHEMC_INTHEMC_Handler;            /* 59 HEMC Controller */
   pfn_handler_t pfnHEMC_INTFIX_Handler;             /* 60 HEMC ECC Fixable error detected */
   pfn_handler_t pfnHEMC_INTNOFIX_Handler;           /* 61 HEMC ECC Un-Fixable error detected */
   pfn_handler_t pfnSFR_Handler;                     /* 62 Special Function Register */
