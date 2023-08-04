@@ -22,7 +22,7 @@ Key features enabled in this project are:
 - Field weakening
 
 
-## MHC Project Configurations
+## MCC Project Configurations
 
 ![MHC Project Graph](images/project_graph.jpg)
 
