@@ -668,7 +668,8 @@ void MCCTRL_CurrentLoopTasks( uint32_t status, uintptr_t context )
     /* Clarke, Park transform */
     MCCTRL_SignalTransformation();
 
-
+    /* Rotor position estimation */
+    MCRPOS_PositionMeasurement( );
 
     /* Motor control */
     MCCTRL_MotorControl( );
