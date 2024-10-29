@@ -7,9 +7,6 @@ package:
   required: false
 
   dependencies:
-    - name: "csp"
+    - name: "motor_control"
       type: "package"
-      version: "v3.17.0"
-    - name: "x2c"
-      type: "package"
-      version: "v1.4.0"
+      version: "fixed_point_dev_imprv"
