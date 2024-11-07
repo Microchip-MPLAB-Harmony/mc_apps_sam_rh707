@@ -29,8 +29,16 @@ notes and licensing information.
 | Folder     | Description                                               |
 |------------|-----------------------------------------------------------|
 | apps       | Demonstration applications for Motor Control              |
-| docs       | Contains documentation in html format for offline viewing (to be used only after cloning this repository onto a local machine). Use [github pages](https://microchip-mplab-harmony.github.io/mc_apps_sam_rh707/) of this repository for viewing it online.                   |
 |||
+
+## Documentation
+
+Click [here](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=MC_APPS_SAM_RH707_INTRODUCTION&redirect=true) to view the online documentation of code examples hosted in this repository.
+
+To view the documentation offline, follow these steps:
+ - Download the publication as a zip file from [here](https://onlinedocs.microchip.com/download/GUID-76DDA6ED-BB0A-4273-92F6-0489CC090394?type=webhelp).
+ - Extract the zip file into a folder.
+ - Navigate to the folder and open **index.html** in a web browser of your choice.
 
 ## Static Motor Control Examples
 
@@ -39,8 +47,8 @@ These applications contain static algorithm code and peripherals are configured 
 
 | Name | Description|Control Board|Inverter Board|
 |:-----|:-----------|:------------|:-------------|
-| [PMSM FOC using PLL Estimator](apps/mcp_pmsm_foc_pll_estimator_sam_rh707/readme.md) | Sensorless Field Oriented Control of PMSM using PLL Estimator | [SAMRH707 Motor Control Plugin Module]() | [dsPICDEM™ MCLV-2 Support](https://www.microchip.com/DevelopmentTools/ProductDetails/DM330021-2)  |
-| [PMSM FOC using Quadrature Encoder](apps/mcp_pmsm_foc_encoder_sam_rh707/readme.md) | Sensored Field Oriented Control of PMSM using Quadrature Encoder | [SAMRH707 Motor Control Plugin Module]() | [dsPICDEM™ MCLV-2 Support](https://www.microchip.com/DevelopmentTools/ProductDetails/DM330021-2) |
+| [PMSM FOC using PLL Estimator](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=MC_APPS_SAM_RH707_PMSM_FOC_PLL_ESTIMATOR&redirect=true) | Sensorless Field Oriented Control of PMSM using PLL Estimator | [SAMRH707 Motor Control Plugin Module]() | [dsPICDEM™ MCLV-2 Support](https://www.microchip.com/DevelopmentTools/ProductDetails/DM330021-2)  |
+| [PMSM FOC using Quadrature Encoder](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=MC_APPS_SAM_RH707_PMSM_FOC_QUADRATURE_ENCODER&redirect=true) | Sensored Field Oriented Control of PMSM using Quadrature Encoder | [SAMRH707 Motor Control Plugin Module]() | [dsPICDEM™ MCLV-2 Support](https://www.microchip.com/DevelopmentTools/ProductDetails/DM330021-2) |
 |||||
 
 
