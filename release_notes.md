@@ -8,6 +8,32 @@ nav_order: 99
 
 # Microchip MPLAB® Harmony 3 Release Notes
 
+## Microchip MPLAB® Harmony 3 Motor Control Application Examples for SAM RH707 family v3.2.0
+
+
+### Applications
+
+| Development Board | Number of Applications | 
+| --- | --- | 
+|[dsPICDEM™ MCLV-2 Low Voltage Development Board](https://www.microchip.com/DevelopmentTools/ProductDetails/DM330021-2) | 2 |
+
+### Changes
+* Replaced the old standalone project with QSpin generated example projects
+
+### Known Issues
+* None
+
+### Required MPLAB Harmony v3 Modules
+* motor_control v3.11.0
+
+### Development Tools
+
+* [MPLAB X IDE v6.20](https://www.microchip.com/mplab/mplab-x-ide)
+* [MPLAB XC32 C/C++ Compiler v4.45](https://www.microchip.com/mplab/compilers)
+* MPLAB X IDE plug-ins:
+  * MPLAB Harmony Configurator (MCC) v5.7.1
+  * X2CScope v1.6.6.
+
 ## Microchip MPLAB® Harmony 3 Motor Control Application Examples for SAM RH707 family v3.1.1
 
 
